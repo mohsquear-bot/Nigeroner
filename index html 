@@ -1,0 +1,1591 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#070d1a" />
+  <title>NIGER ONE • Le Niger Connecté</title>
+  <style>
+    /* 100% Self-Contained CSS: Zero external CDNs, instant render, 60fps mobile interactions */
+    :root {
+      --bg-main: #070d1a;
+      --bg-header: #091122;
+      --bg-card: #0f1829;
+      --bg-card-active: #16233b;
+      --bg-input: #0b1324;
+      --border-subtle: rgba(148, 163, 184, 0.14);
+      --border-strong: rgba(59, 130, 246, 0.35);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent-blue: #1d63ed;
+      --accent-blue-soft: rgba(29, 99, 237, 0.16);
+      --accent-gold: #eab308;
+      --accent-gold-soft: rgba(234, 179, 8, 0.16);
+      --accent-green: #10b981;
+      --accent-green-soft: rgba(16, 185, 129, 0.16);
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      height: 100%;
+      background-color: #030711;
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Mobile App Container */
+    .app-shell {
+      width: 100%;
+      max-width: 440px;
+      min-height: 100vh;
+      background-color: var(--bg-main);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      border-left: 1px solid var(--border-subtle);
+      border-right: 1px solid var(--border-subtle);
+    }
+
+    /* Sticky Top Bar */
+    .top-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background-color: rgba(7, 13, 26, 0.96);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 12px 16px 10px;
+    }
+
+    .header-row-1 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      border: 1px solid rgba(96, 165, 250, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 12px;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-name {
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.4px;
+      color: #ffffff;
+      white-space: nowrap;
+    }
+
+    /* Language Switcher */
+    .lang-group {
+      display: flex;
+      align-items: center;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
+      padding: 2px;
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 9px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .lang-btn.active {
+      background-color: var(--accent-blue);
+      color: #ffffff;
+    }
+
+    /* Header Icon Buttons */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .icon-btn {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .icon-btn.gold {
+      color: var(--accent-gold);
+    }
+
+    .badge-dot {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 4px;
+      border-radius: 999px;
+      background-color: var(--accent-gold);
+      color: #070d1a;
+      font-size: 10px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Sub-header Row */
+    .header-row-2 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+      gap: 8px;
+    }
+
+    .location-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
+      padding: 6px 12px;
+      color: var(--text-primary);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .sub-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ia-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background-color: var(--bg-card);
+      border: 1px solid rgba(234, 179, 8, 0.45);
+      border-radius: var(--radius-sm);
+      padding: 6px 10px;
+      color: var(--accent-gold);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Main Scroll Viewport */
+    .main-content {
+      flex: 1;
+      padding: 14px 16px 92px;
+      overflow-y: auto;
+    }
+
+    /* Tap Feedback */
+    .tap {
+      transition: transform 0.12s ease, background-color 0.12s ease;
+    }
+
+    .tap:active {
+      transform: scale(0.96);
+      background-color: var(--bg-card-active);
+    }
+
+    /* Welcome & Search */
+    .welcome-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .welcome-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.2px;
+    }
+
+    .proto-badge {
+      background-color: var(--accent-gold-soft);
+      border: 1px solid rgba(234, 179, 8, 0.4);
+      color: var(--accent-gold);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 6px;
+    }
+
+    .welcome-sub {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .search-wrap {
+      position: relative;
+      margin-top: 12px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--accent-blue);
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      background-color: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 11px 14px 11px 38px;
+      color: #ffffff;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent-blue);
+    }
+
+    .search-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    /* Section Header */
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 16px 0 10px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .section-tag {
+      font-size: 12px;
+      font-weight: 600;
+      color: #3b82f6;
+    }
+
+    /* 4x2 Service Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .service-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 10px 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      cursor: pointer;
+      color: var(--text-primary);
+    }
+
+    .service-icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-blue { background-color: var(--accent-blue-soft); color: #3b82f6; }
+    .icon-gold { background-color: var(--accent-gold-soft); color: var(--accent-gold); }
+    .icon-green { background-color: var(--accent-green-soft); color: var(--accent-green); }
+
+    .service-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #e2e8f0;
+      text-align: center;
+      line-height: 1.2;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding: 0 2px;
+    }
+
+    /* Hero Banner (Pure CSS + Inline SVG Skyline) */
+    .hero-banner {
+      margin-top: 14px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #0d1d3d 0%, #0b162e 55%, #192d57 100%);
+      border: 1px solid var(--border-subtle);
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skyline-svg {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 185px;
+      height: 95px;
+      opacity: 0.28;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 82%;
+    }
+
+    .hero-kicker {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-top: 3px;
+    }
+
+    .hero-desc {
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.45;
+      margin-top: 5px;
+    }
+
+    /* AI Assistant Card */
+    .ai-card {
+      margin-top: 12px;
+      width: 100%;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 13px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+      cursor: pointer;
+      color: var(--text-primary);
+    }
+
+    .ai-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background-color: var(--accent-blue-soft);
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ai-card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .ai-card-sub {
+      font-size: 11.5px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+      line-height: 1.35;
+    }
+
+    /* List Cards for Secondary Tabs & Modals */
+    .list-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 9px;
+    }
+
+    .wallet-hero {
+      background: linear-gradient(135deg, #1d4ed8, #0f172a);
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .wallet-amount {
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-top: 4px;
+    }
+
+    .wallet-actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .btn-primary {
+      background-color: var(--accent-blue);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 9px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-light {
+      background-color: #ffffff;
+      color: #070d1a;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 9px 8px;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .btn-outline {
+      background-color: rgba(7, 13, 26, 0.55);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: var(--radius-sm);
+      padding: 9px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Fixed Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: 440px;
+      z-index: 30;
+      background-color: rgba(7, 13, 26, 0.97);
+      border-top: 1px solid var(--border-subtle);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 8px 6px 10px;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+
+    .nav-pill {
+      padding: 5px 16px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .nav-btn.active .nav-pill {
+      background-color: #ffffff;
+      color: #070d1a;
+    }
+
+    .nav-label {
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .nav-btn.active .nav-label {
+      color: #60a5fa;
+      font-weight: 700;
+    }
+
+    /* Drawers / Modals */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background-color: rgba(2, 6, 17, 0.78);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-sheet {
+      width: 100%;
+      max-width: 440px;
+      background-color: #0d1629;
+      border-top: 1px solid rgba(148, 163, 184, 0.25);
+      border-radius: 24px 24px 0 0;
+      padding: 16px;
+      max-height: 84vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 12px;
+    }
+
+    .chat-box {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 4px 0 10px;
+      min-height: 180px;
+      max-height: 44vh;
+    }
+
+    .msg-bubble {
+      padding: 10px 13px;
+      border-radius: 15px;
+      font-size: 12.5px;
+      line-height: 1.45;
+      max-width: 85%;
+      white-space: pre-line;
+    }
+
+    .msg-ai {
+      background-color: #15223b;
+      border: 1px solid var(--border-subtle);
+      color: #f1f5f9;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+
+    .msg-user {
+      background-color: var(--accent-blue);
+      color: #ffffff;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .chips-row {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .chip-btn {
+      flex-shrink: 0;
+      background-color: #15223b;
+      border: 1px solid var(--border-subtle);
+      color: #93c5fd;
+      border-radius: 999px;
+      padding: 6px 11px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .chat-form {
+      display: flex;
+      gap: 8px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    /* Non-blocking Toast */
+    .toast {
+      position: fixed;
+      bottom: 78px;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background-color: #15233e;
+      color: #ffffff;
+      border: 1px solid var(--border-strong);
+      padding: 9px 16px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      z-index: 60;
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- TOP STICKY HEADER -->
+    <header class="top-header">
+      <div class="header-row-1">
+        <div class="brand">
+          <div class="brand-badge">N1</div>
+          <span class="brand-name">NIGER ONE</span>
+        </div>
+
+        <div class="lang-group" role="group" aria-label="Language">
+          <button type="button" class="lang-btn active" id="lang-FR" onclick="setLang('FR')">FR</button>
+          <button type="button" class="lang-btn" id="lang-EN" onclick="setLang('EN')">EN</button>
+          <button type="button" class="lang-btn" id="lang-HA" onclick="setLang('HA')">HA</button>
+        </div>
+
+        <div class="header-actions">
+          <button type="button" class="icon-btn tap" onclick="openCartModal()" aria-label="Panier">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+            <span class="badge-dot" id="cart-count">1</span>
+          </button>
+          <button type="button" class="icon-btn gold tap" onclick="switchTab('profil')" aria-label="Profil">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="header-row-2">
+        <button type="button" class="location-pill tap" onclick="cycleDistrict()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#3b82f6">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+          </svg>
+          <span id="district-pill-text">Niamey • Niamey I</span>
+          <span style="color:#94a3b8;font-size:10px;">▾</span>
+        </button>
+
+        <div class="sub-actions">
+          <button type="button" class="icon-btn tap" onclick="showToast(t('notifToast'))" aria-label="Notifications">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4a1.5 1.5 0 0 0-3 0v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+            </svg>
+            <span class="badge-dot">1</span>
+          </button>
+
+          <button type="button" class="ia-pill tap" onclick="openAI()">
+            <span>✨</span>
+            <span>IA</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT VIEWPORT (Pre-populated with static HTML so middle screen NEVER renders blank) -->
+    <main class="main-content" id="main-view">
+      <div class="welcome-row">
+        <h1 class="welcome-title" id="txt-welcome">Bonjour, Bienvenue sur NIGER ONE</h1>
+        <span class="proto-badge">Prototype</span>
+      </div>
+      <p class="welcome-sub" id="txt-sub">Client NIGER ONE • Niamey (Niamey I)</p>
+
+      <div class="search-wrap">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="search" id="search-input" class="search-input" oninput="filterServices(this.value)" placeholder="Rechercher produits, entreprises, ..." />
+      </div>
+
+      <div class="section-head">
+        <h2 class="section-title" id="txt-services-head">Services NIGER ONE</h2>
+        <span class="section-tag">Niamey</span>
+      </div>
+
+      <!-- 4x2 Service Grid (Rendered immediately in HTML + updated dynamically) -->
+      <div class="services-grid" id="services-grid">
+        <button type="button" class="service-card tap" onclick="openService('marketplace')">
+          <div class="service-icon-box icon-blue">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+          </div>
+          <span class="service-label" data-srv="marketplace">Marketplace</span>
+        </button>
+
+        <button type="button" class="service-card tap" onclick="openService('taxi')">
+          <div class="service-icon-box icon-gold">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11"/>
+              <rect x="3" y="11" width="18" height="6" rx="2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>
+            </svg>
+          </div>
+          <span class="service-label" data-srv="taxi">Taxi</span>
+        </button>
+
+        <button type="button" class="service-card tap" onclick="openService('livraison')">
+          <div class="service-icon-box icon-green">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <span class="service-label" data-srv="livraison">Livraison</span>
+        </button>
+
+        <button type="button" class="service-card tap" onclick="switchTab('portefeuille')">
+          <div class="service-icon-box icon-gold">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/>
+            </svg>
+          </div>
+          <span class="service-label" data-srv="portefeuille">Portefeuille</span>
+        </button>
+
+        <button type="button" class="service-card tap" onclick="openService('hotels')">
+          <div class="service-icon-box icon-gold">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/>
+            </svg>
+          </div>
+          <span class="service-label" data-srv="hotels">Hôtels & Restos</span>
+        </button>
+
+        <button type="button" class="service-card tap" onclick="openService('emplois')">
+          <div class="service-icon-box icon-blue">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
+          </div>
+          <span class="service-label" data-srv="emplois">Emplois</span>
+        </button>
+
+        <button type="button" class="service-card tap" onclick="openService('annuaire')">
+          <div class="service-icon-box icon-green">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <span class="service-label" data-srv="annuaire">Annuaire</span>
+        </button>
+
+        <button type="button" class="service-card tap" onclick="openService('education')">
+          <div class="service-icon-box icon-gold">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+          <span class="service-label" data-srv="education">Éducation</span>
+        </button>
+      </div>
+
+      <!-- Hero Banner -->
+      <div class="hero-banner">
+        <svg class="skyline-svg" viewBox="0 0 200 100" fill="none">
+          <rect x="18" y="46" width="18" height="54" rx="2" fill="#3b82f6"/>
+          <rect x="42" y="26" width="24" height="74" rx="2" fill="#60a5fa"/>
+          <path d="M82 100V34L95 20L108 34V100H82Z" fill="#eab308"/>
+          <rect x="116" y="42" width="22" height="58" rx="2" fill="#3b82f6"/>
+          <rect x="144" y="18" width="28" height="82" rx="2" fill="#93c5fd"/>
+        </svg>
+        <div class="hero-content">
+          <div class="hero-kicker">NIAMEY</div>
+          <h3 class="hero-title" id="txt-banner-title">Le Niger Connecté</h3>
+          <p class="hero-desc" id="txt-banner-desc">Marketplace, annuaire vérifié et services régionaux dans une seule app.</p>
+        </div>
+      </div>
+
+      <!-- Assistant IA Multilingue Card -->
+      <button type="button" class="ai-card tap" onclick="openAI()">
+        <div class="ai-avatar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="ai-card-title" id="txt-ai-title">Assistant IA Multilingue</div>
+          <div class="ai-card-sub" id="txt-ai-sub">Posez vos questions en Français, English ou Hausa.</div>
+        </div>
+      </button>
+    </main>
+
+    <!-- FIXED BOTTOM NAVIGATION -->
+    <nav class="bottom-nav" aria-label="Navigation principale">
+      <button type="button" class="nav-btn active" id="nav-accueil" onclick="switchTab('accueil')">
+        <div class="nav-pill">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+          </svg>
+        </div>
+        <span class="nav-label" id="nav-lbl-accueil">Accueil</span>
+      </button>
+
+      <button type="button" class="nav-btn" id="nav-services" onclick="switchTab('services')">
+        <div class="nav-pill">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1">
+            <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>
+          </svg>
+        </div>
+        <span class="nav-label" id="nav-lbl-services">Services</span>
+      </button>
+
+      <button type="button" class="nav-btn" id="nav-portefeuille" onclick="switchTab('portefeuille')">
+        <div class="nav-pill">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1">
+            <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/>
+          </svg>
+        </div>
+        <span class="nav-label" id="nav-lbl-portefeuille">Portefeuille</span>
+      </button>
+
+      <button type="button" class="nav-btn" id="nav-profil" onclick="switchTab('profil')">
+        <div class="nav-pill">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1">
+            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+        </div>
+        <span class="nav-label" id="nav-lbl-profil">Profil</span>
+      </button>
+    </nav>
+
+    <!-- SERVICE / CART DETAIL MODAL -->
+    <div class="modal-backdrop" id="detail-modal" onclick="if(event.target===this) closeDetailModal()">
+      <div class="modal-sheet">
+        <div class="modal-head">
+          <h3 style="font-size:15px;font-weight:800;color:#fff;" id="modal-title">Service</h3>
+          <button type="button" class="icon-btn" onclick="closeDetailModal()" aria-label="Fermer">✕</button>
+        </div>
+        <div id="modal-body" style="overflow-y:auto;"></div>
+      </div>
+    </div>
+
+    <!-- MULTILINGUAL AI ASSISTANT DRAWER -->
+    <div class="modal-backdrop" id="ai-modal" onclick="if(event.target===this) closeAI()">
+      <div class="modal-sheet">
+        <div class="modal-head">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="ai-avatar" style="width:36px;height:36px;">✨</div>
+            <div>
+              <div style="font-size:14px;font-weight:800;color:#fff;" id="drawer-ai-title">Assistant IA Multilingue</div>
+              <div style="font-size:11px;color:#94a3b8;">Français • English • Hausa</div>
+            </div>
+          </div>
+          <button type="button" class="icon-btn" onclick="closeAI()" aria-label="Fermer">✕</button>
+        </div>
+
+        <div class="chat-box" id="chat-messages">
+          <div class="msg-bubble msg-ai" id="ai-greeting-msg">
+            Sannu ! Bonjour ! Comment puis-je vous aider à Niamey aujourd'hui ? (Taxi, Marketplace, FCFA, Annuaire...)
+          </div>
+        </div>
+
+        <div class="chips-row" id="ai-chips"></div>
+
+        <form class="chat-form" onsubmit="sendAIMessage(event)">
+          <input type="text" id="ai-input" class="search-input" style="padding-left:13px;" placeholder="Écrivez en FR, EN ou HA..." />
+          <button type="submit" class="btn-primary tap">OK</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- NON-BLOCKING TOAST -->
+    <div class="toast" id="toast-el"></div>
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      /* App State */
+      var state = {
+        lang: "FR",
+        tab: "accueil",
+        districtIdx: 0,
+        districts: ["Niamey I", "Niamey II", "Niamey III", "Niamey IV", "Niamey V"],
+        search: "",
+        walletFCFA: 45500,
+        cart: [
+          { name: "Sac de Riz Parfumé 25kg", price: 13500, vendor: "Marché Katako" }
+        ],
+        transactions: [
+          { title: "Recharge Airtel Money Niamey", amount: 25000, date: "Aujourd'hui, 14:20" },
+          { title: "Course Taxi • Plateau → Yantala", amount: -1500, date: "Hier, 18:45" },
+          { title: "Recharge Moov Money", amount: 22000, date: "20 Nov" }
+        ]
+      };
+
+      /* Complete Multilingual Dictionary (FR / EN / HA) */
+      var dict = {
+        FR: {
+          welcome: "Bonjour, Bienvenue sur NIGER ONE",
+          clientSub: "Client NIGER ONE • Niamey",
+          searchPh: "Rechercher produits, entreprises, ...",
+          servicesHead: "Services NIGER ONE",
+          bannerTitle: "Le Niger Connecté",
+          bannerDesc: "Marketplace, annuaire vérifié et services régionaux dans une seule app.",
+          aiTitle: "Assistant IA Multilingue",
+          aiSub: "Posez vos questions en Français, English ou Hausa.",
+          aiGreeting: "Sannu ! Bonjour ! Comment puis-je vous aider à Niamey aujourd'hui ? (Taxi, Marketplace, FCFA, Annuaire...)",
+          aiInputPh: "Écrivez en FR, EN ou HA...",
+          navAccueil: "Accueil",
+          navServices: "Services",
+          navPortefeuille: "Portefeuille",
+          navProfil: "Profil",
+          notifToast: "1 notification : Bienvenue sur NIGER ONE Niamey !",
+          walletBal: "Solde Disponible",
+          recentTx: "Transactions Récentes",
+          profileStatus: "Compte Vérifié • Niamey",
+          chips: [
+            { label: "🚕 Taxi Aéroport", q: "Quel est le tarif d'un taxi vers l'Aéroport Diori Hamani ?" },
+            { label: "💱 Taux FCFA", q: "Donne-moi le taux de change EUR et USD en FCFA (XOF)." },
+            { label: "🏥 Pharmacie de garde", q: "Où trouver une pharmacie ouverte à Niamey ?" }
+          ],
+          services: {
+            marketplace: "Marketplace",
+            taxi: "Taxi",
+            livraison: "Livraison",
+            portefeuille: "Portefeuille",
+            hotels: "Hôtels & Restos",
+            emplois: "Emplois",
+            annuaire: "Annuaire",
+            education: "Éducation"
+          }
+        },
+        EN: {
+          welcome: "Hello, Welcome to NIGER ONE",
+          clientSub: "NIGER ONE Client • Niamey",
+          searchPh: "Search products, businesses, ...",
+          servicesHead: "NIGER ONE Services",
+          bannerTitle: "Connected Niger",
+          bannerDesc: "Marketplace, verified directory, and regional services in one app.",
+          aiTitle: "Multilingual AI Assistant",
+          aiSub: "Ask your questions in Français, English, or Hausa.",
+          aiGreeting: "Hello! How can I help you in Niamey today? (Taxi, Marketplace, FCFA Wallet, Directory...)",
+          aiInputPh: "Type in FR, EN, or HA...",
+          navAccueil: "Home",
+          navServices: "Services",
+          navPortefeuille: "Wallet",
+          navProfil: "Profile",
+          notifToast: "1 notification: Welcome to NIGER ONE Niamey!",
+          walletBal: "Available Balance",
+          recentTx: "Recent Transactions",
+          profileStatus: "Verified Account • Niamey",
+          chips: [
+            { label: "🚕 Airport Taxi", q: "How much is a taxi to Diori Hamani Airport in Niamey?" },
+            { label: "💱 FCFA Rates", q: "What is the EUR and USD exchange rate in FCFA (XOF)?" },
+            { label: "🏥 Open Pharmacy", q: "Where can I find a 24h pharmacy in Niamey?" }
+          ],
+          services: {
+            marketplace: "Marketplace",
+            taxi: "Taxi",
+            livraison: "Delivery",
+            portefeuille: "Wallet",
+            hotels: "Hotels & Food",
+            emplois: "Jobs",
+            annuaire: "Directory",
+            education: "Education"
+          }
+        },
+        HA: {
+          welcome: "Sannu, Barka da zuwa NIGER ONE",
+          clientSub: "Abokin Ciniki NIGER ONE • Yamai",
+          searchPh: "Nemi kayayyaki, kamfanoni, ...",
+          servicesHead: "Ayyukan NIGER ONE",
+          bannerTitle: "Nijar Mai Haɗin Kai",
+          bannerDesc: "Kasuwa, kundin kamfanoni da ayyukan yanki a cikin manhaja guda.",
+          aiTitle: "Mataimakin IA Mai Harsuna",
+          aiSub: "Yi tambayoyinka da Faransanci, Turanci ko Hausa.",
+          aiGreeting: "Sannu! Yaya zan iya taimaka maka a Yamai yau? (Tasi, Kasuwa, Asusun FCFA, Kundi...)",
+          aiInputPh: "Rubuta da FR, EN ko HA...",
+          navAccueil: "Gida",
+          navServices: "Ayyuka",
+          navPortefeuille: "Asusu",
+          navProfil: "Bayani",
+          notifToast: "Sanarwa 1: Barka da zuwa NIGER ONE Yamai!",
+          walletBal: "Kuɗin da ke Asusu",
+          recentTx: "Cinikayyar Kwanan Nan",
+          profileStatus: "Asusu Tabbacce • Yamai",
+          chips: [
+            { label: "🚕 Tasi Filin Jirgi", q: "Nawa ne kuɗin tasi zuwa filin jirgin sama na Yamai?" },
+            { label: "💱 Farashin FCFA", q: "Menene farashin Dala da Yuro zuwa FCFA?" },
+            { label: "🏥 Kantin Magani", q: "Ina zan sami kantin magani a buɗe a Yamai?" }
+          ],
+          services: {
+            marketplace: "Kasuwa",
+            taxi: "Tasi",
+            livraison: "Isar da Kaya",
+            portefeuille: "Asusu",
+            hotels: "Otal & Abinci",
+            emplois: "Ayyukan Yi",
+            annuaire: "Kundi",
+            education: "Ilimi"
+          }
+        }
+      };
+
+      function t(key) {
+        return (dict[state.lang] && dict[state.lang][key]) || dict.FR[key] || key;
+      }
+      window.t = t;
+
+      /* Service Catalog & Realistic Niamey Offers */
+      var catalog = [
+        {
+          id: "marketplace",
+          iconClass: "icon-blue",
+          keywords: "marketplace kasuwa boutique riz huile telephone",
+          svg: '<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>',
+          items: [
+            { name: "Sac de Riz Parfumé 25kg", price: 13500, vendor: "Marché Katako • Niamey" },
+            { name: "Bidon Huile Végétale 5L", price: 6500, vendor: "Grand Marché" },
+            { name: "Smartphone Samsung A15", price: 98000, vendor: "Niamey Tech Plateau" }
+          ]
+        },
+        {
+          id: "taxi",
+          iconClass: "icon-gold",
+          keywords: "taxi tasi transport course aeroport plateau",
+          svg: '<path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11"/><rect x="3" y="11" width="18" height="6" rx="2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>',
+          items: [
+            { name: "Course Ville • Niamey Centre", price: 1500, vendor: "Chauffeur à 3 min" },
+            { name: "Navette Aéroport Diori Hamani", price: 4000, vendor: "Climatisé • Dispo" },
+            { name: "Location Journée Chauffeur", price: 25000, vendor: "Carburant inclus" }
+          ]
+        },
+        {
+          id: "livraison",
+          iconClass: "icon-green",
+          keywords: "livraison colis express moto coursier",
+          svg: '<rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>',
+          items: [
+            { name: "Coursier Moto Express (< 5 km)", price: 1000, vendor: "Livraison en 25 min" },
+            { name: "Colis Inter-Quartiers (Niamey I–V)", price: 1500, vendor: "Suivi en direct" }
+          ]
+        },
+        {
+          id: "portefeuille",
+          iconClass: "icon-gold",
+          keywords: "portefeuille asusu wallet fcfa xof airtel moov zamani",
+          svg: '<path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/>',
+          isWallet: true
+        },
+        {
+          id: "hotels",
+          iconClass: "icon-gold",
+          keywords: "hotels restos otal abinci restaurant diner",
+          svg: '<path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/>',
+          items: [
+            { name: "Le Pilier • Grillades & Capitaine", price: 5500, vendor: "Plateau • Ouvert" },
+            { name: "Hôtel Gaweye • Chambre Standard", price: 45000, vendor: "Corniche Yantala" }
+          ]
+        },
+        {
+          id: "emplois",
+          iconClass: "icon-blue",
+          keywords: "emplois jobs ayyuka travail recrutement",
+          svg: '<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
+          items: [
+            { name: "Comptable Junior (CDI)", price: 220000, vendor: "Groupe Sahel • Niamey" },
+            { name: "Agent Commercial Terrain", price: 140000, vendor: "Niamey II" }
+          ]
+        },
+        {
+          id: "annuaire",
+          iconClass: "icon-green",
+          keywords: "annuaire directory kundi pharmacie banque",
+          svg: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
+          items: [
+            { name: "Pharmacie de Garde • Grand Marché", price: 0, vendor: "Ouvert 24h/24 • Vérifié" },
+            { name: "SONIBANK Agence Centrale", price: 0, vendor: "Avenue de la Mairie" }
+          ]
+        },
+        {
+          id: "education",
+          iconClass: "icon-gold",
+          keywords: "education ilimi universite cours formation",
+          svg: '<path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>',
+          items: [
+            { name: "Annales Bac & BEPC Niger", price: 0, vendor: "Accès Gratuit" },
+            { name: "Formation Bureautique & Excel", price: 15000, vendor: "Centre Niamey I" }
+          ]
+        }
+      ];
+
+      function formatFCFA(num) {
+        if (!num || num === 0) return "Gratuit / Info";
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " FCFA";
+      }
+
+      /* Toast Helper */
+      var toastTimeout = null;
+      function showToast(msg) {
+        var el = document.getElementById("toast-el");
+        if (!el) return;
+        el.textContent = msg;
+        el.classList.add("show");
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(function () {
+          el.classList.remove("show");
+        }, 2300);
+      }
+      window.showToast = showToast;
+
+      /* Render Services Grid */
+      function renderServicesGrid() {
+        var grid = document.getElementById("services-grid");
+        if (!grid) return;
+        var q = state.search.toLowerCase().trim();
+        var filtered = catalog.filter(function (s) {
+          if (!q) return true;
+          var label = (t("services")[s.id] || "").toLowerCase();
+          return label.indexOf(q) !== -1 || s.keywords.indexOf(q) !== -1;
+        });
+
+        if (filtered.length === 0) {
+          grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:18px;background:#0f1829;border-radius:14px;font-size:12px;color:#94a3b8;">Aucun résultat à Niamey</div>';
+          return;
+        }
+
+        grid.innerHTML = filtered.map(function (s) {
+          var label = t("services")[s.id] || s.id;
+          var action = s.isWallet ? "switchTab('portefeuille')" : "openService('" + s.id + "')";
+          return (
+            '<button type="button" class="service-card tap" onclick="' + action + '">' +
+              '<div class="service-icon-box ' + s.iconClass + '">' +
+                '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + s.svg + '</svg>' +
+              '</div>' +
+              '<span class="service-label">' + label + '</span>' +
+            '</button>'
+          );
+        }).join("");
+      }
+
+      /* Render Active Tab View */
+      function renderView() {
+        var view = document.getElementById("main-view");
+        if (!view) return;
+        var dist = state.districts[state.districtIdx];
+
+        if (state.tab === "accueil") {
+          view.innerHTML =
+            '<div class="welcome-row">' +
+              '<h1 class="welcome-title">' + t("welcome") + '</h1>' +
+              '<span class="proto-badge">Prototype</span>' +
+            '</div>' +
+            '<p class="welcome-sub">' + t("clientSub") + ' (' + dist + ')</p>' +
+            '<div class="search-wrap">' +
+              '<svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">' +
+                '<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>' +
+              '</svg>' +
+              '<input type="search" id="search-input" class="search-input" value="' + state.search.replace(/"/g, "&quot;") + '" oninput="filterServices(this.value)" placeholder="' + t("searchPh") + '" />' +
+            '</div>' +
+            '<div class="section-head">' +
+              '<h2 class="section-title">' + t("servicesHead") + '</h2>' +
+              '<span class="section-tag">Niamey</span>' +
+            '</div>' +
+            '<div class="services-grid" id="services-grid"></div>' +
+            '<div class="hero-banner">' +
+              '<svg class="skyline-svg" viewBox="0 0 200 100" fill="none">' +
+                '<rect x="18" y="46" width="18" height="54" rx="2" fill="#3b82f6"/>' +
+                '<rect x="42" y="26" width="24" height="74" rx="2" fill="#60a5fa"/>' +
+                '<path d="M82 100V34L95 20L108 34V100H82Z" fill="#eab308"/>' +
+                '<rect x="116" y="42" width="22" height="58" rx="2" fill="#3b82f6"/>' +
+                '<rect x="144" y="18" width="28" height="82" rx="2" fill="#93c5fd"/>' +
+              '</svg>' +
+              '<div class="hero-content">' +
+                '<div class="hero-kicker">NIAMEY</div>' +
+                '<h3 class="hero-title">' + t("bannerTitle") + '</h3>' +
+                '<p class="hero-desc">' + t("bannerDesc") + '</p>' +
+              '</div>' +
+            '</div>' +
+            '<button type="button" class="ai-card tap" onclick="openAI()">' +
+              '<div class="ai-avatar">' +
+                '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">' +
+                  '<path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/>' +
+                '</svg>' +
+              '</div>' +
+              '<div>' +
+                '<div class="ai-card-title">' + t("aiTitle") + '</div>' +
+                '<div class="ai-card-sub">' + t("aiSub") + '</div>' +
+              '</div>' +
+            '</button>';
+          renderServicesGrid();
+        } else if (state.tab === "services") {
+          view.innerHTML =
+            '<h2 class="welcome-title" style="margin-bottom:12px;">' + t("servicesHead") + ' • ' + dist + '</h2>' +
+            catalog.map(function (s) {
+              var label = t("services")[s.id] || s.id;
+              var sub = s.isWallet ? formatFCFA(state.walletFCFA) : (s.items[0].name + " • " + formatFCFA(s.items[0].price));
+              var act = s.isWallet ? "switchTab('portefeuille')" : "openService('" + s.id + "')";
+              return (
+                '<button type="button" class="list-card tap" style="width:100%;text-align:left;cursor:pointer;color:#fff;" onclick="' + act + '">' +
+                  '<div style="display:flex;align-items:center;gap:12px;">' +
+                    '<div class="service-icon-box ' + s.iconClass + '">' +
+                      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' + s.svg + '</svg>' +
+                    '</div>' +
+                    '<div>' +
+                      '<div style="font-size:13.5px;font-weight:700;">' + label + '</div>' +
+                      '<div style="font-size:11.5px;color:#94a3b8;margin-top:2px;">' + sub + '</div>' +
+                    '</div>' +
+                  '</div>' +
+                  '<span style="color:#3b82f6;font-size:13px;font-weight:700;">→</span>' +
+                '</button>'
+              );
+            }).join("");
+        } else if (state.tab === "portefeuille") {
+          view.innerHTML =
+            '<div class="wallet-hero">' +
+              '<div style="font-size:12px;color:#bfdbfe;font-weight:600;">' + t("walletBal") + ' (XOF)</div>' +
+              '<div class="wallet-amount">' + formatFCFA(state.walletFCFA) + '</div>' +
+              '<div class="wallet-actions">' +
+                '<button type="button" class="btn-light tap" onclick="walletAction(10000, \'Airtel Money\')">+ Airtel</button>' +
+                '<button type="button" class="btn-light tap" onclick="walletAction(10000, \'Moov Money\')">+ Moov</button>' +
+                '<button type="button" class="btn-outline tap" onclick="walletAction(-2500, \'Transfert Zamani\')">Envoyer</button>' +
+              '</div>' +
+            '</div>' +
+            '<div class="section-head"><h3 class="section-title">' + t("recentTx") + '</h3><span class="section-tag">XOF</span></div>' +
+            state.transactions.map(function (tx) {
+              var pos = tx.amount > 0;
+              return (
+                '<div class="list-card">' +
+                  '<div>' +
+                    '<div style="font-size:13px;font-weight:600;color:#fff;">' + tx.title + '</div>' +
+                    '<div style="font-size:11px;color:#64748b;margin-top:2px;">' + tx.date + '</div>' +
+                  '</div>' +
+                  '<div style="font-size:12.5px;font-weight:800;color:' + (pos ? '#10b981' : '#f8fafc') + ';">' +
+                    (pos ? '+' : '') + formatFCFA(tx.amount) +
+                  '</div>' +
+                '</div>'
+              );
+            }).join("");
+        } else if (state.tab === "profil") {
+          view.innerHTML =
+            '<div class="list-card" style="padding:16px;">' +
+              '<div style="display:flex;align-items:center;gap:12px;">' +
+                '<div style="width:46px;height:46px;border-radius:50%;background:rgba(234,179,8,0.18);border:1px solid rgba(234,179,8,0.45);display:flex;align-items:center;justify-content:center;color:#eab308;font-weight:800;font-size:16px;">N1</div>' +
+                '<div>' +
+                  '<div style="font-size:15px;font-weight:800;color:#fff;">Client NIGER ONE</div>' +
+                  '<div style="font-size:12px;color:#10b981;margin-top:2px;">' + t("profileStatus") + ' (' + dist + ')</div>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="list-card"><div><div style="font-size:12px;color:#94a3b8;">Quartier Actif</div><div style="font-size:13px;font-weight:700;margin-top:2px;">Niamey • ' + dist + '</div></div><button type="button" class="btn-primary tap" onclick="cycleDistrict()">Changer</button></div>' +
+            '<div class="list-card"><div><div style="font-size:12px;color:#94a3b8;">Langue de l\'application</div><div style="font-size:13px;font-weight:700;margin-top:2px;">' + state.lang + ' (FR / EN / HA)</div></div><button type="button" class="btn-primary tap" onclick="cycleLang()">Changer</button></div>' +
+            '<div class="list-card"><div><div style="font-size:12px;color:#94a3b8;">Installer sur l\'écran d\'accueil</div><div style="font-size:11.5px;color:#cbd5e1;margin-top:2px;">Menu Chrome (⋮) → Ajouter à l\'écran d\'accueil</div></div></div>';
+        }
+      }
+
+      /* Navigation & Language Controls */
+      window.switchTab = function (tabName) {
+        state.tab = tabName;
+        ["accueil", "services", "portefeuille", "profil"].forEach(function (id) {
+          var btn = document.getElementById("nav-" + id);
+          if (btn) btn.classList.toggle("active", id === tabName);
+        });
+        renderView();
+      };
+
+      window.setLang = function (code) {
+        state.lang = code;
+        ["FR", "EN", "HA"].forEach(function (c) {
+          var b = document.getElementById("lang-" + c);
+          if (b) b.classList.toggle("active", c === code);
+        });
+        document.getElementById("nav-lbl-accueil").textContent = t("navAccueil");
+        document.getElementById("nav-lbl-services").textContent = t("navServices");
+        document.getElementById("nav-lbl-portefeuille").textContent = t("navPortefeuille");
+        document.getElementById("nav-lbl-profil").textContent = t("navProfil");
+        document.getElementById("drawer-ai-title").textContent = t("aiTitle");
+        document.getElementById("ai-input").placeholder = t("aiInputPh");
+        renderAIChips();
+        renderView();
+      };
+
+      window.cycleLang = function () {
+        var order = ["FR", "EN", "HA"];
+        var next = order[(order.indexOf(state.lang) + 1) % order.length];
+        setLang(next);
+      };
+
+      window.cycleDistrict = function () {
+        state.districtIdx = (state.districtIdx + 1) % state.districts.length;
+        var dist = state.districts[state.districtIdx];
+        document.getElementById("district-pill-text").textContent = "Niamey • " + dist;
+        renderView();
+        showToast("Niamey • " + dist);
+      };
+
+      window.filterServices = function (val) {
+        state.search = val || "";
+        renderServicesGrid();
+      };
+
+      window.walletAction = function (delta, label) {
+        if (delta < 0 && state.walletFCFA + delta < 0) {
+          showToast("Solde FCFA insuffisant");
+          return;
+        }
+        state.walletFCFA += delta;
+        state.transactions.unshift({
+          title: label,
+          amount: delta,
+          date: "À l'instant"
+        });
+        renderView();
+        showToast((delta > 0 ? "+" : "") + formatFCFA(delta));
+      };
+
+      /* Service & Cart Modals */
+      window.openService = function (id) {
+        var srv = catalog.find(function (s) { return s.id === id; });
+        if (!srv || !srv.items) return;
+        document.getElementById("modal-title").textContent = t("services")[id] || id;
+        document.getElementById("modal-body").innerHTML = srv.items.map(function (it, idx) {
+          var btnLabel = it.price > 0 ? formatFCFA(it.price) : "Contacter";
+          return (
+            '<div class="list-card">' +
+              '<div>' +
+                '<div style="font-size:13px;font-weight:700;color:#fff;">' + it.name + '</div>' +
+                '<div style="font-size:11px;color:#94a3b8;margin-top:2px;">' + it.vendor + '</div>' +
+              '</div>' +
+              '<button type="button" class="btn-primary tap" onclick="addCartItem(\'' + id + '\',' + idx + ')">' + btnLabel + '</button>' +
+            '</div>'
+          );
+        }).join("");
+        document.getElementById("detail-modal").classList.add("open");
+      };
+
+      window.addCartItem = function (srvId, idx) {
+        var srv = catalog.find(function (s) { return s.id === srvId; });
+        if (!srv || !srv.items[idx]) return;
+        var item = srv.items[idx];
+        state.cart.push(item);
+        document.getElementById("cart-count").textContent = state.cart.length;
+        closeDetailModal();
+        showToast("Ajouté : " + item.name);
+      };
+
+      window.openCartModal = function () {
+        document.getElementById("modal-title").textContent = "Panier NIGER ONE (" + state.cart.length + ")";
+        if (state.cart.length === 0) {
+          document.getElementById("modal-body").innerHTML = '<p style="font-size:13px;color:#94a3b8;padding:12px 0;">Votre panier est vide.</p>';
+        } else {
+          var total = state.cart.reduce(function (acc, item) { return acc + (item.price || 0); }, 0);
+          document.getElementById("modal-body").innerHTML =
+            state.cart.map(function (it) {
+              return '<div class="list-card"><div><div style="font-size:13px;font-weight:700;">' + it.name + '</div><div style="font-size:11px;color:#94a3b8;">' + it.vendor + '</div></div><div style="font-size:12px;font-weight:700;color:#eab308;">' + formatFCFA(it.price) + '</div></div>';
+            }).join("") +
+            '<div style="display:flex;justify-content:space-between;align-items:center;padding-top:10px;">' +
+              '<span style="font-size:13px;font-weight:800;">Total : ' + formatFCFA(total) + '</span>' +
+              '<button type="button" class="btn-primary tap" onclick="checkoutCart(' + total + ')">Payer FCFA</button>' +
+            '</div>';
+        }
+        document.getElementById("detail-modal").classList.add("open");
+      };
+
+      window.checkoutCart = function (total) {
+        if (total > state.walletFCFA) {
+          showToast("Solde Portefeuille insuffisant");
+          return;
+        }
+        if (total > 0) {
+          state.walletFCFA -= total;
+          state.transactions.unshift({ title: "Commande NIGER ONE", amount: -total, date: "À l'instant" });
+        }
+        state.cart = [];
+        document.getElementById("cart-count").textContent = "0";
+        closeDetailModal();
+        renderView();
+        showToast("Commande confirmée à Niamey !");
+      };
+
+      window.closeDetailModal = function () {
+        document.getElementById("detail-modal").classList.remove("open");
+      };
+
+      /* Multilingual AI Assistant (Gemini API + Guaranteed Smart Offline Fallback) */
+      function renderAIChips() {
+        var box = document.getElementById("ai-chips");
+        if (!box) return;
+        box.innerHTML = t("chips").map(function (c) {
+          return '<button type="button" class="chip-btn tap" onclick="quickAsk(\'' + c.q.replace(/'/g, "\\'") + '\')">' + c.label + '</button>';
+        }).join("");
+      }
+
+      window.openAI = function () {
+        renderAIChips();
+        document.getElementById("ai-modal").classList.add("open");
+      };
+
+      window.closeAI = function () {
+        document.getElementById("ai-modal").classList.remove("open");
+      };
+
+      window.quickAsk = function (question) {
+        document.getElementById("ai-input").value = question;
+        sendAIMessage(new Event("submit"));
+      };
+
+      function getSmartOfflineReply(q) {
+        var low = q.toLowerCase();
+        if (low.indexOf("taxi") !== -1 || low.indexOf("tasi") !== -1 || low.indexOf("aeroport") !== -1 || low.indexOf("aéroport") !== -1 || low.indexOf("airport") !== -1) {
+          return state.lang === "HA"
+            ? "🚕 Tasi NIGER ONE: Kudin tasi zuwa filin jirgin sama na Diori Hamani shine 4 000 FCFA. Akwai direba a kusa da kai."
+            : state.lang === "EN"
+            ? "🚕 NIGER ONE Taxi: A ride to Diori Hamani Airport is 4,000 FCFA (approx. 12 mins from Niamey I)."
+            : "🚕 Taxi NIGER ONE : Le tarif vers l'Aéroport Diori Hamani est de 4 000 FCFA. Un chauffeur est disponible à 3 min.";
+        }
+        if (low.indexOf("fcfa") !== -1 || low.indexOf("xof") !== -1 || low.indexOf("taux") !== -1 || low.indexOf("rate") !== -1 || low.indexOf("farashin") !== -1) {
+          return "💱 Taux FCFA (XOF) :\n• 1 EUR = 655,96 FCFA (fixe)\n• 1 USD ≈ 606 FCFA\nVotre solde actuel : " + formatFCFA(state.walletFCFA) + ".";
+        }
+        if (low.indexOf("pharmacie") !== -1 || low.indexOf("pharmacy") !== -1 || low.indexOf("magani") !== -1) {
+          return "🏥 Pharmacie de Garde (Niamey) : Pharmacie du Grand Marché & Pharmacie Plateau sont ouvertes 24h/24.";
+        }
+        return state.lang === "HA"
+          ? "Sannu! Ina nan don taimaka maka da Kasuwa, Tasi, Isar da kaya da Asusun FCFA a Yamai."
+          : state.lang === "EN"
+          ? "Hello! I can assist you with Marketplace, Taxi, Delivery, Directory, and FCFA Wallet across Niamey."
+          : "Bonjour ! Je peux vous aider sur Marketplace, Taxi, Livraison, Annuaire et votre Portefeuille FCFA à Niamey.";
+      }
+
+      window.sendAIMessage = function (e) {
+        if (e) e.preventDefault();
+        var input = document.getElementById("ai-input");
+        var text = (input.value || "").trim();
+        if (!text) return;
+        input.value = "";
+
+        var chat = document.getElementById("chat-messages");
+        var userDiv = document.createElement("div");
+        userDiv.className = "msg-bubble msg-user";
+        userDiv.textContent = text;
+        chat.appendChild(userDiv);
+
+        var aiDiv = document.createElement("div");
+        aiDiv.className = "msg-bubble msg-ai";
+        aiDiv.textContent = "...";
+        chat.appendChild(aiDiv);
+        chat.scrollTop = chat.scrollHeight;
+
+        var apiKey = "";
+        var url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + apiKey;
+        var payload = {
+          contents: [{ parts: [{ text: text }] }],
+          systemInstruction: {
+            parts: [{
+              text: "You are NIGER ONE Assistant IA Multilingue in Niamey, Niger. Reply concisely in " + state.lang + " (FR, EN, or HA)."
+            }]
+          }
+        };
+
+        fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        })
+          .then(function (res) {
+            if (!res.ok) throw new Error("API unavailable");
+            return res.json();
+          })
+          .then(function (data) {
+            var reply = data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0] && data.candidates[0].content.parts[0].text;
+            aiDiv.textContent = reply ? reply.trim() : getSmartOfflineReply(text);
+            chat.scrollTop = chat.scrollHeight;
+          })
+          .catch(function () {
+            aiDiv.textContent = getSmartOfflineReply(text);
+            chat.scrollTop = chat.scrollHeight;
+          });
+      };
+
+      /* Safe Initialization Guard */
+      try {
+        renderServicesGrid();
+        renderAIChips();
+      } catch (err) {
+        console.error("NIGER ONE init fallback active:", err);
+      }
+    })();
+  </script>
+</body>
+</html>
+```
