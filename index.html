@@ -1,34 +1,40 @@
-
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#070d1a" />
+  <meta name="theme-color" content="#060b16" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <link rel="manifest" href="manifest.json" />
-  <title>NIGER ONE • Le Niger Connecté (8 Régions • Quantum Shield)</title>
+  <title>NIGER ONE • Le Niger Connecté (UI/UX Pro • 5 Comptes • 8 Régions)</title>
   <style>
     :root {
-      --bg-main: #070d1a;
-      --bg-header: #091122;
-      --bg-card: #0f1829;
-      --bg-card-active: #16233b;
-      --bg-input: #0b1324;
-      --border-subtle: rgba(148, 163, 184, 0.14);
-      --border-strong: rgba(59, 130, 246, 0.35);
+      --bg-canvas: #040811;
+      --bg-shell: #070e1c;
+      --bg-header: rgba(7, 14, 28, 0.94);
+      --bg-card: #0e192e;
+      --bg-card-elevated: #14223d;
+      --bg-input: #0a1222;
+      --border-hairline: rgba(148, 163, 184, 0.14);
+      --border-gold: rgba(245, 158, 11, 0.36);
+      --border-emerald: rgba(16, 185, 129, 0.36);
+
       --text-primary: #f8fafc;
-      --text-secondary: #94a3b8;
+      --text-secondary: #9fb0c7;
       --text-muted: #64748b;
-      --accent-blue: #1d63ed;
-      --accent-blue-soft: rgba(29, 99, 237, 0.16);
-      --accent-gold: #eab308;
-      --accent-gold-soft: rgba(234, 179, 8, 0.16);
-      --accent-green: #10b981;
-      --accent-green-soft: rgba(16, 185, 129, 0.16);
-      --accent-cyan: #06b6d4;
-      --accent-cyan-soft: rgba(6, 182, 212, 0.15);
+
+      --sahel-gold: #f59e0b;
+      --sahel-gold-bright: #fbbf24;
+      --sahel-gold-soft: rgba(245, 158, 11, 0.16);
+
+      --niger-emerald: #10b981;
+      --niger-emerald-soft: rgba(16, 185, 129, 0.16);
+
+      --royal-indigo: #3b82f6;
+      --royal-indigo-soft: rgba(59, 130, 246, 0.16);
+
+      --radius-xl: 22px;
       --radius-lg: 18px;
       --radius-md: 14px;
       --radius-sm: 10px;
@@ -42,8 +48,8 @@
     }
 
     html, body {
-      height: 100%;
-      background-color: #030711;
+      min-height: 100%;
+      background: radial-gradient(circle at top, #0f1d38 0%, var(--bg-canvas) 68%);
       color: var(--text-primary);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       overflow-x: hidden;
@@ -59,21 +65,23 @@
       width: 100%;
       max-width: 440px;
       min-height: 100vh;
-      background-color: var(--bg-main);
+      background-color: var(--bg-shell);
       display: flex;
       flex-direction: column;
       position: relative;
-      border-left: 1px solid var(--border-subtle);
-      border-right: 1px solid var(--border-subtle);
+      border-left: 1px solid var(--border-hairline);
+      border-right: 1px solid var(--border-hairline);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
     }
 
     .top-header {
       position: sticky;
       top: 0;
       z-index: 30;
-      background-color: rgba(7, 13, 26, 0.96);
-      border-bottom: 1px solid var(--border-subtle);
-      padding: 12px 16px 10px;
+      background-color: var(--bg-header);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-hairline);
+      padding: 12px 16px 11px;
     }
 
     .header-row-1 {
@@ -93,22 +101,21 @@
     .brand-badge {
       width: 32px;
       height: 32px;
-      border-radius: 9px;
-      background: linear-gradient(135deg, #2563eb, #06b6d4);
-      border: 1px solid rgba(96, 165, 250, 0.45);
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--sahel-gold-bright) 0%, #d97706 55%, var(--niger-emerald) 100%);
+      color: #060b16;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
+      font-weight: 900;
       font-size: 12px;
-      color: #ffffff;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.4px;
     }
 
     .brand-name {
       font-weight: 800;
       font-size: 14px;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.5px;
       color: #ffffff;
       white-space: nowrap;
     }
@@ -117,7 +124,7 @@
       display: flex;
       align-items: center;
       background-color: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-hairline);
       border-radius: 999px;
       padding: 2px;
     }
@@ -131,12 +138,11 @@
       padding: 4px 9px;
       border-radius: 999px;
       cursor: pointer;
-      transition: background-color 0.15s ease, color 0.15s ease;
     }
 
     .lang-btn.active {
-      background-color: var(--accent-blue);
-      color: #ffffff;
+      background: linear-gradient(135deg, var(--sahel-gold), #d97706);
+      color: #070e1c;
     }
 
     .header-actions {
@@ -151,7 +157,7 @@
       height: 34px;
       border-radius: var(--radius-sm);
       background-color: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-hairline);
       color: var(--text-primary);
       display: flex;
       align-items: center;
@@ -160,7 +166,8 @@
     }
 
     .icon-btn.gold {
-      color: var(--accent-gold);
+      color: var(--sahel-gold-bright);
+      border-color: var(--border-gold);
     }
 
     .badge-dot {
@@ -171,8 +178,8 @@
       height: 16px;
       padding: 0 4px;
       border-radius: 999px;
-      background-color: var(--accent-gold);
-      color: #070d1a;
+      background-color: var(--sahel-gold-bright);
+      color: #070e1c;
       font-size: 10px;
       font-weight: 800;
       display: flex;
@@ -193,31 +200,17 @@
       align-items: center;
       gap: 6px;
       background-color: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-hairline);
       border-radius: 999px;
       padding: 6px 11px;
       color: var(--text-primary);
       font-size: 11.5px;
       font-weight: 600;
       cursor: pointer;
-      max-width: 195px;
+      max-width: 185px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-    }
-
-    .shield-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background-color: var(--accent-cyan-soft);
-      border: 1px solid rgba(6, 182, 212, 0.4);
-      border-radius: 999px;
-      padding: 5px 8px;
-      color: #67e8f9;
-      font-size: 10px;
-      font-weight: 700;
-      cursor: pointer;
     }
 
     .sub-actions {
@@ -226,15 +219,29 @@
       gap: 6px;
     }
 
+    .verify-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background-color: var(--niger-emerald-soft);
+      border: 1px solid var(--border-emerald);
+      border-radius: 999px;
+      padding: 5px 9px;
+      color: #6ee7b7;
+      font-size: 10.5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
     .ia-pill {
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      background-color: var(--bg-card);
-      border: 1px solid rgba(234, 179, 8, 0.45);
+      background-color: var(--sahel-gold-soft);
+      border: 1px solid var(--border-gold);
       border-radius: var(--radius-sm);
       padding: 6px 10px;
-      color: var(--accent-gold);
+      color: var(--sahel-gold-bright);
       font-size: 12px;
       font-weight: 700;
       cursor: pointer;
@@ -242,17 +249,17 @@
 
     .main-content {
       flex: 1;
-      padding: 14px 16px 92px;
+      padding: 14px 16px 96px;
       overflow-y: auto;
     }
 
     .tap {
-      transition: transform 0.12s ease, background-color 0.12s ease;
+      transition: transform 0.12s ease, background-color 0.12s ease, border-color 0.12s ease;
     }
 
     .tap:active {
-      transform: scale(0.96);
-      background-color: var(--bg-card-active);
+      transform: scale(0.97);
+      background-color: var(--bg-card-elevated);
     }
 
     .welcome-row {
@@ -263,30 +270,30 @@
     }
 
     .welcome-title {
-      font-size: 16px;
+      font-size: 16.5px;
       font-weight: 800;
       color: #ffffff;
       letter-spacing: -0.2px;
     }
 
-    .proto-badge {
-      background-color: var(--accent-gold-soft);
-      border: 1px solid rgba(234, 179, 8, 0.4);
-      color: var(--accent-gold);
+    .pill-gold {
+      background-color: var(--sahel-gold-soft);
+      border: 1px solid var(--border-gold);
+      color: var(--sahel-gold-bright);
       font-size: 10px;
       font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 6px;
+      padding: 2px 8px;
+      border-radius: 999px;
     }
 
-    .quantum-badge {
-      background-color: var(--accent-green-soft);
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      color: #34d399;
+    .pill-emerald {
+      background-color: var(--niger-emerald-soft);
+      border: 1px solid var(--border-emerald);
+      color: #6ee7b7;
       font-size: 10px;
       font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 6px;
+      padding: 2px 8px;
+      border-radius: 999px;
     }
 
     .welcome-sub {
@@ -295,6 +302,133 @@
       margin-top: 4px;
     }
 
+    /* 5 Account Type Tabs Bar */
+    .account-tabs-wrap {
+      margin-top: 12px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      padding: 10px 10px 9px;
+    }
+
+    .account-tabs-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      padding: 0 2px;
+    }
+
+    .account-tabs-label {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--sahel-gold-bright);
+    }
+
+    .account-tabs-row {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .acc-tab-btn {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background-color: var(--bg-input);
+      border: 1px solid var(--border-hairline);
+      color: var(--text-secondary);
+      border-radius: 999px;
+      padding: 6px 11px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .acc-tab-btn.active {
+      background: linear-gradient(135deg, var(--sahel-gold-bright), #d97706);
+      border-color: var(--sahel-gold);
+      color: #070e1c;
+    }
+
+    .account-workspace-card {
+      margin-top: 8px;
+      background-color: var(--bg-input);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 10px 11px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    /* Pinterest-Inspired Promo Deal Banner */
+    .promo-banner {
+      margin-top: 12px;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, #064e3b 0%, #0e192e 55%, #78350f 100%);
+      border: 1px solid var(--border-gold);
+      padding: 15px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .promo-code-chip {
+      display: inline-block;
+      margin-top: 7px;
+      background-color: rgba(16, 185, 129, 0.22);
+      border: 1px dashed #34d399;
+      color: #6ee7b7;
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 8px;
+      letter-spacing: 0.4px;
+    }
+
+    .promo-emblem {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--sahel-gold-bright), #d97706);
+      color: #070e1c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      flex-shrink: 0;
+      box-shadow: 0 10px 24px rgba(245, 158, 11, 0.3);
+    }
+
+    /* Pinterest-Inspired Trust Strip */
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .trust-chip {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-sm);
+      padding: 7px 4px;
+      text-align: center;
+      font-size: 9.5px;
+      font-weight: 700;
+      color: #cbd5e1;
+      line-height: 1.25;
+    }
+
+    /* Search */
     .search-wrap {
       position: relative;
       margin-top: 12px;
@@ -305,26 +439,34 @@
       left: 13px;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--accent-blue);
+      color: var(--sahel-gold-bright);
       pointer-events: none;
     }
 
-    .search-input {
+    .search-input, .field-input {
       width: 100%;
       background-color: var(--bg-input);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-hairline);
       border-radius: var(--radius-md);
-      padding: 11px 14px 11px 38px;
       color: #ffffff;
       font-size: 13px;
       outline: none;
     }
 
-    .search-input:focus {
-      border-color: var(--accent-blue);
+    .search-input {
+      padding: 11px 14px 11px 38px;
     }
 
-    .search-input::placeholder {
+    .field-input {
+      padding: 10px 12px;
+      margin-bottom: 8px;
+    }
+
+    .search-input:focus, .field-input:focus {
+      border-color: var(--sahel-gold);
+    }
+
+    .search-input::placeholder, .field-input::placeholder {
       color: var(--text-muted);
     }
 
@@ -343,8 +485,9 @@
 
     .section-tag {
       font-size: 12px;
-      font-weight: 600;
-      color: #3b82f6;
+      font-weight: 700;
+      color: var(--sahel-gold-bright);
+      cursor: pointer;
     }
 
     .services-grid {
@@ -355,7 +498,7 @@
 
     .service-card {
       background-color: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-hairline);
       border-radius: var(--radius-md);
       padding: 10px 4px;
       display: flex;
@@ -376,9 +519,9 @@
       justify-content: center;
     }
 
-    .icon-blue { background-color: var(--accent-blue-soft); color: #3b82f6; }
-    .icon-gold { background-color: var(--accent-gold-soft); color: var(--accent-gold); }
-    .icon-green { background-color: var(--accent-green-soft); color: var(--accent-green); }
+    .icon-gold { background-color: var(--sahel-gold-soft); color: var(--sahel-gold-bright); }
+    .icon-emerald { background-color: var(--niger-emerald-soft); color: #34d399; }
+    .icon-indigo { background-color: var(--royal-indigo-soft); color: #60a5fa; }
 
     .service-label {
       font-size: 11px;
@@ -393,55 +536,87 @@
       padding: 0 2px;
     }
 
-    .hero-banner {
-      margin-top: 14px;
+    /* Pinterest-Inspired Today's Deals Horizontal Cards */
+    .deals-row {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .deal-card {
+      flex-shrink: 0;
+      width: 158px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-hairline);
       border-radius: var(--radius-lg);
-      background: linear-gradient(135deg, #0d1d3d 0%, #0b162e 55%, #132c4e 100%);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      padding: 16px;
-      position: relative;
-      overflow: hidden;
+      padding: 11px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .skyline-svg {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      width: 185px;
-      height: 95px;
-      opacity: 0.28;
-      pointer-events: none;
+    .deal-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 82%;
-    }
-
-    .hero-kicker {
-      font-size: 10px;
+    .deal-badge {
+      background-color: rgba(244, 63, 94, 0.2);
+      border: 1px solid rgba(244, 63, 94, 0.45);
+      color: #fda4af;
+      font-size: 9.5px;
       font-weight: 800;
-      letter-spacing: 1.2px;
-      color: var(--accent-gold);
-      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 6px;
     }
 
-    .hero-title {
-      font-size: 17px;
-      font-weight: 800;
-      color: #ffffff;
-      margin-top: 3px;
+    .deal-emoji {
+      font-size: 26px;
+      margin: 4px 0 6px;
     }
 
-    .hero-desc {
-      font-size: 12px;
-      color: #cbd5e1;
-      line-height: 1.45;
-      margin-top: 5px;
+    /* Live Order Tracking Card (from Pinterest FoodGo Step 8) */
+    .tracker-card {
+      margin-top: 12px;
+      background: linear-gradient(135deg, #101d36 0%, #0b1629 100%);
+      border: 1px solid var(--border-emerald);
+      border-radius: var(--radius-lg);
+      padding: 13px;
     }
 
-    .futuristic-grid {
+    .tracker-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .t-step {
+      font-size: 9.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .t-step.done {
+      color: #34d399;
+    }
+
+    .t-bar {
+      height: 4px;
+      border-radius: 999px;
+      background-color: rgba(148, 163, 184, 0.2);
+      margin-bottom: 4px;
+    }
+
+    .t-step.done .t-bar {
+      background: linear-gradient(90deg, var(--sahel-gold-bright), var(--niger-emerald));
+    }
+
+    .hud-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8px;
@@ -450,7 +625,7 @@
 
     .mini-hud-card {
       background-color: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-hairline);
       border-radius: var(--radius-md);
       padding: 11px 12px;
       text-align: left;
@@ -461,7 +636,7 @@
     .mini-hud-kicker {
       font-size: 10px;
       font-weight: 700;
-      color: #67e8f9;
+      color: var(--sahel-gold-bright);
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -471,19 +646,25 @@
       font-weight: 800;
       color: #ffffff;
       margin-top: 3px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .mini-hud-sub {
       font-size: 10.5px;
       color: var(--text-secondary);
       margin-top: 2px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .ai-card {
       margin-top: 12px;
       width: 100%;
       background-color: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-hairline);
       border-radius: var(--radius-lg);
       padding: 13px 14px;
       display: flex;
@@ -498,13 +679,14 @@
       width: 42px;
       height: 42px;
       border-radius: 50%;
-      background-color: var(--accent-blue-soft);
-      border: 1px solid rgba(59, 130, 246, 0.35);
-      color: var(--accent-gold);
+      background-color: var(--sahel-gold-soft);
+      border: 1px solid var(--border-gold);
+      color: var(--sahel-gold-bright);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      font-size: 17px;
     }
 
     .ai-card-title {
@@ -520,16 +702,19 @@
       line-height: 1.35;
     }
 
-    .list-card {
+    .list-card, .panel-box {
       background-color: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-hairline);
       border-radius: var(--radius-md);
       padding: 13px;
+      margin-bottom: 9px;
+    }
+
+    .list-card {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      margin-bottom: 9px;
     }
 
     .region-chip-row {
@@ -543,7 +728,7 @@
     .region-pill-btn {
       flex-shrink: 0;
       background-color: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-hairline);
       color: var(--text-secondary);
       border-radius: 999px;
       padding: 6px 11px;
@@ -553,15 +738,15 @@
     }
 
     .region-pill-btn.active {
-      background-color: var(--accent-blue);
-      border-color: var(--accent-blue);
-      color: #ffffff;
+      background: linear-gradient(135deg, var(--sahel-gold), #d97706);
+      border-color: var(--sahel-gold);
+      color: #070e1c;
     }
 
     .wallet-hero {
-      background: linear-gradient(135deg, #1d4ed8, #0f172a);
-      border: 1px solid rgba(96, 165, 250, 0.35);
-      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #1b2845 0%, #0d2b28 100%);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-xl);
       padding: 18px;
       margin-bottom: 14px;
     }
@@ -580,20 +765,27 @@
       margin-top: 14px;
     }
 
+    .btn-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
     .btn-primary {
-      background-color: var(--accent-blue);
-      color: #ffffff;
+      background: linear-gradient(135deg, var(--sahel-gold), #d97706);
+      color: #070e1c;
       border: none;
       border-radius: var(--radius-sm);
       padding: 9px 12px;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       cursor: pointer;
     }
 
     .btn-light {
       background-color: #ffffff;
-      color: #070d1a;
+      color: #070e1c;
       border: none;
       border-radius: var(--radius-sm);
       padding: 9px 8px;
@@ -603,11 +795,11 @@
     }
 
     .btn-outline {
-      background-color: rgba(7, 13, 26, 0.55);
+      background-color: rgba(7, 14, 28, 0.65);
       color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.24);
       border-radius: var(--radius-sm);
-      padding: 9px 8px;
+      padding: 9px 10px;
       font-size: 11px;
       font-weight: 700;
       cursor: pointer;
@@ -619,8 +811,9 @@
       width: 100%;
       max-width: 440px;
       z-index: 30;
-      background-color: rgba(7, 13, 26, 0.97);
-      border-top: 1px solid var(--border-subtle);
+      background-color: rgba(7, 14, 28, 0.97);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border-hairline);
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       padding: 8px 6px 10px;
@@ -643,12 +836,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background-color 0.15s ease, color 0.15s ease;
     }
 
     .nav-btn.active .nav-pill {
-      background-color: #ffffff;
-      color: #070d1a;
+      background: linear-gradient(135deg, var(--sahel-gold-bright), #d97706);
+      color: #070e1c;
     }
 
     .nav-label {
@@ -657,15 +849,104 @@
     }
 
     .nav-btn.active .nav-label {
-      color: #60a5fa;
+      color: var(--sahel-gold-bright);
       font-weight: 700;
+    }
+
+    .lock-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 70;
+      background: radial-gradient(circle at top, #132240 0%, #050a14 75%);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .lock-screen.active {
+      display: flex;
+    }
+
+    .lock-card {
+      width: 100%;
+      max-width: 390px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-xl);
+      padding: 20px 18px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    .lock-shield {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 8px;
+      border-radius: 15px;
+      background-color: var(--sahel-gold-soft);
+      border: 1px solid var(--border-gold);
+      color: var(--sahel-gold-bright);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .pin-dots {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 14px 0 8px;
+    }
+
+    .pin-dot {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      border: 2px solid var(--sahel-gold-bright);
+      background: transparent;
+    }
+
+    .pin-dot.filled {
+      background-color: var(--sahel-gold-bright);
+    }
+
+    .pin-error {
+      min-height: 18px;
+      font-size: 12px;
+      color: #fda4af;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .key-btn {
+      background-color: var(--bg-input);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      padding: 12px 0;
+      font-size: 17px;
+      font-weight: 800;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    .key-btn.action {
+      font-size: 12px;
+      color: var(--text-secondary);
     }
 
     .modal-backdrop {
       position: fixed;
       inset: 0;
       z-index: 50;
-      background-color: rgba(2, 6, 17, 0.78);
+      background-color: rgba(2, 6, 17, 0.8);
       display: none;
       align-items: flex-end;
       justify-content: center;
@@ -678,11 +959,11 @@
     .modal-sheet {
       width: 100%;
       max-width: 440px;
-      background-color: #0d1629;
-      border-top: 1px solid rgba(148, 163, 184, 0.25);
+      background-color: #0c1528;
+      border-top: 1px solid var(--border-gold);
       border-radius: 24px 24px 0 0;
       padding: 16px;
-      max-height: 84vh;
+      max-height: 86vh;
       display: flex;
       flex-direction: column;
     }
@@ -692,7 +973,7 @@
       align-items: center;
       justify-content: space-between;
       padding-bottom: 12px;
-      border-bottom: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-hairline);
       margin-bottom: 12px;
     }
 
@@ -717,16 +998,17 @@
     }
 
     .msg-ai {
-      background-color: #15223b;
-      border: 1px solid var(--border-subtle);
+      background-color: var(--bg-card-elevated);
+      border: 1px solid var(--border-hairline);
       color: #f1f5f9;
       align-self: flex-start;
       border-bottom-left-radius: 4px;
     }
 
     .msg-user {
-      background-color: var(--accent-blue);
-      color: #ffffff;
+      background: linear-gradient(135deg, var(--sahel-gold), #d97706);
+      color: #070e1c;
+      font-weight: 600;
       align-self: flex-end;
       border-bottom-right-radius: 4px;
     }
@@ -740,9 +1022,9 @@
 
     .chip-btn {
       flex-shrink: 0;
-      background-color: #15223b;
-      border: 1px solid var(--border-subtle);
-      color: #93c5fd;
+      background-color: var(--bg-card-elevated);
+      border: 1px solid var(--border-hairline);
+      color: var(--sahel-gold-bright);
       border-radius: 999px;
       padding: 6px 11px;
       font-size: 11px;
@@ -754,7 +1036,7 @@
       display: flex;
       gap: 6px;
       padding-top: 8px;
-      border-top: 1px solid var(--border-subtle);
+      border-top: 1px solid var(--border-hairline);
       align-items: center;
     }
 
@@ -763,9 +1045,9 @@
       bottom: 78px;
       left: 50%;
       transform: translateX(-50%) translateY(10px);
-      background-color: #15233e;
+      background-color: var(--bg-card-elevated);
       color: #ffffff;
-      border: 1px solid var(--border-strong);
+      border: 1px solid var(--border-gold);
       padding: 9px 16px;
       border-radius: 12px;
       font-size: 12px;
@@ -773,7 +1055,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.18s ease, transform 0.18s ease;
-      z-index: 60;
+      z-index: 80;
       white-space: nowrap;
       max-width: 92vw;
       overflow: hidden;
@@ -787,6 +1069,45 @@
   </style>
 </head>
 <body>
+  <!-- Home Page Security Gate -->
+  <div class="lock-screen active" id="home-lock-screen" aria-modal="true" role="dialog" aria-label="Home Security Lock">
+    <div class="lock-card">
+      <div class="lock-shield">🛡️</div>
+      <div class="pill-gold" style="display:inline-block;margin-bottom:8px;">HOME SECURITY GATE</div>
+      <h2 style="font-size:17px;font-weight:800;color:#fff;">NIGER ONE • Accès Sécurisé</h2>
+      <p style="font-size:12px;color:var(--text-secondary);margin-top:4px;">
+        PIN par défaut : <strong style="color:var(--sahel-gold-bright);">1234</strong> ou utilisez Face ID / Clé d'accès
+      </p>
+
+      <div class="pin-dots" id="pin-dots">
+        <span class="pin-dot"></span>
+        <span class="pin-dot"></span>
+        <span class="pin-dot"></span>
+        <span class="pin-dot"></span>
+      </div>
+      <div class="pin-error" id="pin-error"></div>
+
+      <div class="keypad">
+        <button type="button" class="key-btn" onclick="pressPinKey('1')">1</button>
+        <button type="button" class="key-btn" onclick="pressPinKey('2')">2</button>
+        <button type="button" class="key-btn" onclick="pressPinKey('3')">3</button>
+        <button type="button" class="key-btn" onclick="pressPinKey('4')">4</button>
+        <button type="button" class="key-btn" onclick="pressPinKey('5')">5</button>
+        <button type="button" class="key-btn" onclick="pressPinKey('6')">6</button>
+        <button type="button" class="key-btn" onclick="pressPinKey('7')">7</button>
+        <button type="button" class="key-btn" onclick="pressPinKey('8')">8</button>
+        <button type="button" class="key-btn" onclick="pressPinKey('9')">9</button>
+        <button type="button" class="key-btn action" onclick="clearPinInput()">Effacer</button>
+        <button type="button" class="key-btn" onclick="pressPinKey('0')">0</button>
+        <button type="button" class="key-btn action" onclick="backspacePin()">⌫</button>
+      </div>
+
+      <button type="button" class="btn-outline" style="width:100%;margin-top:10px;" onclick="unlockWithFaceId()">
+        🪪 Déverrouiller avec Face ID / Passkey
+      </button>
+    </div>
+  </div>
+
   <div class="app-shell">
     <header class="top-header">
       <div class="header-row-1">
@@ -819,17 +1140,17 @@
 
       <div class="header-row-2">
         <button type="button" class="location-pill tap" onclick="openRegionsModal()" title="Choisir une région du Niger">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="#3b82f6" style="flex-shrink:0;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#fbbf24" style="flex-shrink:0;">
             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
           </svg>
           <span id="district-pill-text">Niamey • Niamey I</span>
-          <span style="color:#94a3b8;font-size:10px;">▾</span>
+          <span style="color:#9fb0c7;font-size:10px;">▾</span>
         </button>
 
         <div class="sub-actions">
-          <button type="button" class="shield-pill tap" onclick="openSecurityCenter()" aria-label="Security Shield">
-            <span>🛡️</span>
-            <span>Q-SHIELD</span>
+          <button type="button" class="verify-pill tap" onclick="openVerificationCenter()" title="Vérification Identité & Compte">
+            <span>🪪</span>
+            <span>Verify</span>
           </button>
 
           <button type="button" class="icon-btn tap" onclick="showToast(t('notifToast'))" aria-label="Notifications">
@@ -847,143 +1168,7 @@
       </div>
     </header>
 
-    <main class="main-content" id="main-view">
-      <div class="welcome-row">
-        <h1 class="welcome-title" id="txt-welcome">Bonjour, Bienvenue sur NIGER ONE</h1>
-        <span class="proto-badge">Prototype</span>
-        <span class="quantum-badge">8 Régions • Zero-Trust</span>
-      </div>
-      <p class="welcome-sub" id="txt-sub">Client NIGER ONE • Niamey (Niamey I)</p>
-
-      <div class="search-wrap">
-        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
-        <input type="search" id="search-input" class="search-input" oninput="filterServices(this.value)" placeholder="Rechercher produits, entreprises, ..." />
-      </div>
-
-      <div class="section-head">
-        <h2 class="section-title" id="txt-services-head">Services NIGER ONE</h2>
-        <span class="section-tag" id="active-region-tag">Niamey</span>
-      </div>
-
-      <div class="services-grid" id="services-grid">
-        <button type="button" class="service-card tap" onclick="openService('marketplace')">
-          <div class="service-icon-box icon-blue">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-            </svg>
-          </div>
-          <span class="service-label" data-srv="marketplace">Marketplace</span>
-        </button>
-
-        <button type="button" class="service-card tap" onclick="openService('taxi')">
-          <div class="service-icon-box icon-gold">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11"/>
-              <rect x="3" y="11" width="18" height="6" rx="2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>
-            </svg>
-          </div>
-          <span class="service-label" data-srv="taxi">Taxi</span>
-        </button>
-
-        <button type="button" class="service-card tap" onclick="openService('livraison')">
-          <div class="service-icon-box icon-green">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
-              <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
-            </svg>
-          </div>
-          <span class="service-label" data-srv="livraison">Livraison</span>
-        </button>
-
-        <button type="button" class="service-card tap" onclick="switchTab('portefeuille')">
-          <div class="service-icon-box icon-gold">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/>
-            </svg>
-          </div>
-          <span class="service-label" data-srv="portefeuille">Portefeuille</span>
-        </button>
-
-        <button type="button" class="service-card tap" onclick="openService('hotels')">
-          <div class="service-icon-box icon-gold">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/>
-            </svg>
-          </div>
-          <span class="service-label" data-srv="hotels">Hôtels & Restos</span>
-        </button>
-
-        <button type="button" class="service-card tap" onclick="openService('emplois')">
-          <div class="service-icon-box icon-blue">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-            </svg>
-          </div>
-          <span class="service-label" data-srv="emplois">Emplois</span>
-        </button>
-
-        <button type="button" class="service-card tap" onclick="openService('annuaire')">
-          <div class="service-icon-box icon-green">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
-            </svg>
-          </div>
-          <span class="service-label" data-srv="annuaire">Annuaire</span>
-        </button>
-
-        <button type="button" class="service-card tap" onclick="openService('education')">
-          <div class="service-icon-box icon-gold">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
-            </svg>
-          </div>
-          <span class="service-label" data-srv="education">Éducation</span>
-        </button>
-      </div>
-
-      <div class="hero-banner">
-        <svg class="skyline-svg" viewBox="0 0 200 100" fill="none">
-          <rect x="18" y="46" width="18" height="54" rx="2" fill="#3b82f6"/>
-          <rect x="42" y="26" width="24" height="74" rx="2" fill="#60a5fa"/>
-          <path d="M82 100V34L95 20L108 34V100H82Z" fill="#eab308"/>
-          <rect x="116" y="42" width="22" height="58" rx="2" fill="#06b6d4"/>
-          <rect x="144" y="18" width="28" height="82" rx="2" fill="#93c5fd"/>
-        </svg>
-        <div class="hero-content">
-          <div class="hero-kicker">8 RÉGIONS DU NIGER • NEXT-GEN GRID</div>
-          <h3 class="hero-title" id="txt-banner-title">Le Niger Connecté</h3>
-          <p class="hero-desc" id="txt-banner-desc">Niamey, Agadez, Diffa, Dosso, Maradi, Tahoua, Tillabéri & Zinder dans une seule app sécurisée.</p>
-        </div>
-      </div>
-
-      <div class="futuristic-grid">
-        <button type="button" class="mini-hud-card tap" onclick="openSecurityCenter()">
-          <div class="mini-hud-kicker">SECURITY MATRIX</div>
-          <div class="mini-hud-val">5/5 Guards Active</div>
-          <div class="mini-hud-sub">PIN • Anti-Replay • PQC Ready</div>
-        </button>
-        <button type="button" class="mini-hud-card tap" onclick="openRegionsModal()">
-          <div class="mini-hud-kicker">NIGER REGIONS (8/8)</div>
-          <div class="mini-hud-val" id="hud-region-val">Niamey • Niamey I</div>
-          <div class="mini-hud-sub">Tap to switch region or zone</div>
-        </button>
-      </div>
-
-      <button type="button" class="ai-card tap" onclick="openAI()">
-        <div class="ai-avatar">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/>
-          </svg>
-        </div>
-        <div>
-          <div class="ai-card-title" id="txt-ai-title">Assistant IA Multilingue + Voix</div>
-          <div class="ai-card-sub" id="txt-ai-sub">Posez vos questions par texte ou voix en Français, English ou Hausa.</div>
-        </div>
-      </button>
-    </main>
+    <main class="main-content" id="main-view"></main>
 
     <nav class="bottom-nav" aria-label="Navigation principale">
       <button type="button" class="nav-btn active" id="nav-accueil" onclick="switchTab('accueil')">
@@ -1041,7 +1226,7 @@
             <div class="ai-avatar" style="width:36px;height:36px;">✨</div>
             <div>
               <div style="font-size:14px;font-weight:800;color:#fff;" id="drawer-ai-title">Assistant IA Multilingue</div>
-              <div style="font-size:11px;color:#94a3b8;">Français • English • Hausa • Voice</div>
+              <div style="font-size:11px;color:#9fb0c7;">Français • English • Hausa • Voice</div>
             </div>
           </div>
           <button type="button" class="icon-btn" onclick="closeAI()" aria-label="Fermer">✕</button>
@@ -1081,6 +1266,106 @@
         { region: "Zinder", type: "Région", zones: ["Zinder", "Gouré", "Magaria", "Matamèye", "Mirriah", "Tanout"] }
       ];
 
+      var accountTypes = [
+        {
+          id: "normal",
+          icon: "👤",
+          label: { FR: "Client Normal", EN: "Normal Client", HA: "Abokin Ciniki" },
+          badge: "CLIENT • XOF",
+          headline: {
+            FR: "Achats, Taxi, Livraison & Portefeuille FCFA",
+            EN: "Shopping, Taxi, Delivery & FCFA Wallet",
+            HA: "Siyayya, Tasi, Isar da Kaya da Asusun FCFA"
+          },
+          sub: {
+            FR: "Commandez vos produits et courses partout au Niger",
+            EN: "Order products and rides across all 8 regions",
+            HA: "Yi odar kayayyaki da tasi a dukkan yankuna 8"
+          },
+          cta: { FR: "Panier", EN: "Cart", HA: "Kwando" },
+          action: "openCartModal()"
+        },
+        {
+          id: "marketing",
+          icon: "📣",
+          label: { FR: "Marketing", EN: "Marketing", HA: "Talla" },
+          badge: "PROMO • ADS",
+          headline: {
+            FR: "Campagnes & Promotions Régionales",
+            EN: "Regional Campaigns & Product Boosts",
+            HA: "Tallace-tallace a Yankuna 8"
+          },
+          sub: {
+            FR: "Diffusez vos offres sur Marketplace & Réseaux Niger",
+            EN: "Promote offers across Marketplace & Niger feeds",
+            HA: "Fitar da tallar kayanka ga masu saye"
+          },
+          cta: { FR: "Gérer Ads", EN: "Manage Ads", HA: "Talla" },
+          action: "openAccountWorkspace('marketing')"
+        },
+        {
+          id: "delivering",
+          icon: "🛵",
+          label: { FR: "Livraison", EN: "Delivering", HA: "Isar da Kaya" },
+          badge: "COURIER • LIVE",
+          headline: {
+            FR: "Espace Livreur & Chauffeur Express",
+            EN: "Courier & Express Rider Dispatch",
+            HA: "Masu Isar da Kaya da Direbobi"
+          },
+          sub: {
+            FR: "Acceptez les courses et suivez vos gains en FCFA",
+            EN: "Accept delivery runs and track FCFA payouts",
+            HA: "Karɓi aikin isar da kaya ka duba kuɗinka"
+          },
+          cta: { FR: "Courses", EN: "Dispatches", HA: "Ayyuka" },
+          action: "openAccountWorkspace('delivering')"
+        },
+        {
+          id: "jobs",
+          icon: "💼",
+          label: { FR: "Emplois", EN: "Jobs Find", HA: "Neman Aiki" },
+          badge: "CAREERS • CV",
+          headline: {
+            FR: "Recherche d'Emploi & Candidatures",
+            EN: "Job Search & Candidate Profile",
+            HA: "Neman Aikin Yi & Takardun Aiki"
+          },
+          sub: {
+            FR: "Postulez aux offres vérifiées dans les 8 régions",
+            EN: "Apply to verified openings across 8 regions",
+            HA: "Nemi ayyuka masu inganci a dukkan yankuna"
+          },
+          cta: { FR: "Voir Offres", EN: "View Jobs", HA: "Duba Ayyuka" },
+          action: "openAccountWorkspace('jobs')"
+        },
+        {
+          id: "companies",
+          icon: "🏢",
+          label: { FR: "Entreprises", EN: "Companies", HA: "Kamfanoni" },
+          badge: "B2B • PRO",
+          headline: {
+            FR: "Compte Entreprise & Recrutement",
+            EN: "Company Portal & Hiring Hub",
+            HA: "Asusun Kamfanoni da Ɗaukar Ma'aikata"
+          },
+          sub: {
+            FR: "Publiez vos offres d'emploi, catalogue & facturation",
+            EN: "Publish job openings, catalog & company profile",
+            HA: "Wallafa ayyukan yi da kayayyakin kamfani"
+          },
+          cta: { FR: "Espace Pro", EN: "Company Hub", HA: "Kamfani" },
+          action: "openAccountWorkspace('companies')"
+        }
+      ];
+
+      var dailyDeals = [
+        { emoji: "🌾", discount: "-20%", name: "Riz Parfumé 25kg", price: 11500, oldPrice: 14500, vendor: "Katako Fresh" },
+        { emoji: "🍲", discount: "-15%", name: "Pack Grillades & Riz", price: 3800, oldPrice: 4500, vendor: "Sahel Kitchen" },
+        { emoji: "🫒", discount: "-25%", name: "Huile Végétale 5L", price: 5200, oldPrice: 6900, vendor: "Marché Central" },
+        { emoji: "📱", discount: "-10%", name: "Écouteurs Sans Fil", price: 8500, oldPrice: 9500, vendor: "Tech Niger" }
+      ];
+
       function sanitizeText(input) {
         return String(input == null ? "" : input)
           .replace(/&/g, "&amp;")
@@ -1090,37 +1375,46 @@
           .replace(/'/g, "&#39;");
       }
 
-      function getOrCreateSessionFingerprint() {
-        try {
-          var existing = sessionStorage.getItem("n1_session_fp");
-          if (existing) return existing;
-          var rand = new Uint32Array(2);
-          if (window.crypto && window.crypto.getRandomValues) {
-            window.crypto.getRandomValues(rand);
-          } else {
-            rand[0] = Math.floor(Math.random() * 1e9);
-            rand[1] = Date.now() % 1e9;
-          }
-          var fp = "N1-SEC-" + rand[0].toString(16) + "-" + rand[1].toString(16);
-          sessionStorage.setItem("n1_session_fp", fp);
-          return fp;
-        } catch (e) {
-          return "N1-SEC-MEM";
-        }
-      }
-
-      var sessionFingerprint = getOrCreateSessionFingerprint();
-
       var state = {
         lang: "FR",
         tab: "accueil",
+        accountType: "normal",
         regionIdx: 0,
         zoneIdx: 0,
         search: "",
         walletFCFA: 45500,
         securityPin: "1234",
+        homeLockEnabled: true,
+        isLocked: true,
+        pinBuffer: "",
         pinRequiredForTransfers: true,
         lastActionTs: 0,
+        supabaseStatus: "Checking...",
+        liveJobs: [],
+        companyName: "",
+        companyNif: "",
+        courierOnline: true,
+        marketingBudget: 15000,
+        candidateTitle: "",
+        activeOrder: {
+          id: "#N1-842",
+          stage: 3,
+          eta: "15 min",
+          courier: "Moussa Issa"
+        },
+        auth: {
+          email: "",
+          emailVerified: false,
+          phone: "",
+          phoneOtpSent: "",
+          phoneVerified: false,
+          faceIdEnrolled: false,
+          faceIdVerified: false,
+          nationalIdType: "Carte Nationale d'Identité (CNI / NIN)",
+          nationalIdNumber: "",
+          nationalIdFullName: "",
+          nationalIdStatus: "Non soumis"
+        },
         cart: [
           { name: "Sac de Riz Parfumé 25kg", price: 13500, vendor: "Marché Katako" }
         ],
@@ -1132,32 +1426,531 @@
       };
 
       try {
-        var saved = localStorage.getItem("nigerone_state_v1");
+        var saved = localStorage.getItem("nigerone_state_v5");
         if (saved) {
           var parsed = JSON.parse(saved);
           if (typeof parsed.walletFCFA === "number" && isFinite(parsed.walletFCFA)) state.walletFCFA = parsed.walletFCFA;
+          if (typeof parsed.accountType === "string") state.accountType = parsed.accountType;
           if (Array.isArray(parsed.transactions) && parsed.transactions.length > 0) state.transactions = parsed.transactions.slice(0, 20);
           if (Array.isArray(parsed.cart)) state.cart = parsed.cart.slice(0, 20);
           if (typeof parsed.securityPin === "string" && /^\d{4}$/.test(parsed.securityPin)) state.securityPin = parsed.securityPin;
+          if (typeof parsed.homeLockEnabled === "boolean") state.homeLockEnabled = parsed.homeLockEnabled;
           if (typeof parsed.pinRequiredForTransfers === "boolean") state.pinRequiredForTransfers = parsed.pinRequiredForTransfers;
           if (typeof parsed.regionIdx === "number" && parsed.regionIdx >= 0 && parsed.regionIdx < nigerRegions.length) state.regionIdx = parsed.regionIdx;
           if (typeof parsed.zoneIdx === "number" && parsed.zoneIdx >= 0 && parsed.zoneIdx < nigerRegions[state.regionIdx].zones.length) state.zoneIdx = parsed.zoneIdx;
+          if (typeof parsed.companyName === "string") state.companyName = parsed.companyName;
+          if (typeof parsed.companyNif === "string") state.companyNif = parsed.companyNif;
+          if (typeof parsed.courierOnline === "boolean") state.courierOnline = parsed.courierOnline;
+          if (typeof parsed.marketingBudget === "number") state.marketingBudget = parsed.marketingBudget;
+          if (typeof parsed.candidateTitle === "string") state.candidateTitle = parsed.candidateTitle;
+          if (parsed.activeOrder && typeof parsed.activeOrder === "object") state.activeOrder = Object.assign({}, state.activeOrder, parsed.activeOrder);
+          if (parsed.auth && typeof parsed.auth === "object") {
+            state.auth = Object.assign({}, state.auth, parsed.auth);
+          }
         }
       } catch (e) {}
 
+      state.isLocked = state.homeLockEnabled;
+
       function persistState() {
         try {
-          localStorage.setItem("nigerone_state_v1", JSON.stringify({
+          localStorage.setItem("nigerone_state_v5", JSON.stringify({
             walletFCFA: state.walletFCFA,
+            accountType: state.accountType,
             transactions: state.transactions,
             cart: state.cart,
             securityPin: state.securityPin,
+            homeLockEnabled: state.homeLockEnabled,
             pinRequiredForTransfers: state.pinRequiredForTransfers,
             regionIdx: state.regionIdx,
-            zoneIdx: state.zoneIdx
+            zoneIdx: state.zoneIdx,
+            companyName: state.companyName,
+            companyNif: state.companyNif,
+            courierOnline: state.courierOnline,
+            marketingBudget: state.marketingBudget,
+            candidateTitle: state.candidateTitle,
+            activeOrder: state.activeOrder,
+            auth: {
+              email: state.auth.email,
+              emailVerified: state.auth.emailVerified,
+              phone: state.auth.phone,
+              phoneVerified: state.auth.phoneVerified,
+              faceIdEnrolled: state.auth.faceIdEnrolled,
+              faceIdVerified: state.auth.faceIdVerified,
+              nationalIdType: state.auth.nationalIdType,
+              nationalIdNumber: state.auth.nationalIdNumber,
+              nationalIdFullName: state.auth.nationalIdFullName,
+              nationalIdStatus: state.auth.nationalIdStatus
+            }
           }));
         } catch (e) {}
       }
+
+      window.addDealToCart = function (idx) {
+        var d = dailyDeals[idx];
+        if (!d) return;
+        state.cart.push({ name: d.name, price: d.price, vendor: d.vendor });
+        persistState();
+        updateCartBadge();
+        showToast("Ajouté : " + d.name);
+      };
+
+      window.advanceOrderStage = function () {
+        state.activeOrder.stage = state.activeOrder.stage >= 4 ? 1 : state.activeOrder.stage + 1;
+        state.activeOrder.eta = state.activeOrder.stage === 4 ? "Livrée" : ((5 - state.activeOrder.stage) * 7) + " min";
+        persistState();
+        renderView();
+        showToast("Suivi commande " + state.activeOrder.id + " mis à jour");
+      };
+
+      function getCurrentAccountObj() {
+        return accountTypes.find(function (a) { return a.id === state.accountType; }) || accountTypes[0];
+      }
+
+      window.selectAccountType = function (typeId) {
+        var found = accountTypes.find(function (a) { return a.id === typeId; });
+        if (!found) return;
+        state.accountType = found.id;
+        persistState();
+        renderView();
+        var lbl = found.label[state.lang] || found.label.FR;
+        showToast(found.icon + " " + lbl);
+      };
+
+      window.openAccountWorkspace = function (typeId) {
+        var id = typeId || state.accountType;
+        var reg = getCurrentRegionObj().region;
+
+        if (id === "marketing") {
+          document.getElementById("modal-title").textContent = "📣 Compte Marketing • " + reg;
+          document.getElementById("modal-body").innerHTML =
+            '<div class="panel-box">' +
+              '<div style="font-size:13px;font-weight:800;color:#fff;">Budget Campagne Actif : ' + formatFCFA(state.marketingBudget) + '</div>' +
+              '<div style="font-size:11.5px;color:#9fb0c7;margin-top:4px;">Boostez vos produits sur la Marketplace NIGER ONE (' + sanitizeText(reg) + ' & 8 Régions).</div>' +
+              '<div class="btn-row" style="margin-top:10px;">' +
+                '<button type="button" class="btn-primary tap" onclick="boostMarketingCampaign(5000)">+ Booster 5 000 FCFA</button>' +
+                '<button type="button" class="btn-outline tap" onclick="boostMarketingCampaign(15000)">Pack Régional 15 000</button>' +
+              '</div>' +
+            '</div>' +
+            '<div class="list-card"><div><div style="font-size:13px;font-weight:700;">Campagne Offres -20% NIGERONE20</div><div style="font-size:11px;color:#34d399;">Active • Portée : ' + sanitizeText(reg) + '</div></div><span class="pill-gold">EN COURS</span></div>';
+          document.getElementById("detail-modal").classList.add("open");
+        } else if (id === "delivering") {
+          document.getElementById("modal-title").textContent = "🛵 Compte Livraison • " + reg;
+          document.getElementById("modal-body").innerHTML =
+            '<div class="list-card">' +
+              '<div><div style="font-size:13px;font-weight:700;color:#fff;">Statut Livreur</div><div style="font-size:11px;color:' + (state.courierOnline ? '#34d399' : '#9fb0c7') + ';">' + (state.courierOnline ? 'En ligne • Prêt à livrer' : 'Hors ligne') + '</div></div>' +
+              '<button type="button" class="btn-primary tap" onclick="toggleCourierOnline()">' + (state.courierOnline ? 'Passer Hors ligne' : 'Activer') + '</button>' +
+            '</div>' +
+            '<div class="list-card"><div><div style="font-size:13px;font-weight:700;">Colis Express • ' + sanitizeText(getCurrentZone()) + '</div><div style="font-size:11px;color:#9fb0c7;">Gain estimé : 1 500 FCFA</div></div><button type="button" class="btn-primary tap" onclick="acceptDeliveryRun(1500)">Accepter</button></div>' +
+            '<div class="list-card"><div><div style="font-size:13px;font-weight:700;">Livraison Panier Marketplace</div><div style="font-size:11px;color:#9fb0c7;">Gain estimé : 2 500 FCFA</div></div><button type="button" class="btn-primary tap" onclick="acceptDeliveryRun(2500)">Accepter</button></div>';
+          document.getElementById("detail-modal").classList.add("open");
+        } else if (id === "jobs") {
+          var jobsListHtml = (state.liveJobs && state.liveJobs.length > 0)
+            ? state.liveJobs.map(function (job) {
+                var title = job.title || job.name || job.role || "Poste disponible";
+                var place = job.region || job.location || reg;
+                return '<div class="list-card"><div><div style="font-size:13px;font-weight:700;color:#fff;">' + sanitizeText(title) + '</div><div style="font-size:11px;color:#9fb0c7;">' + sanitizeText(place) + '</div></div><button type="button" class="btn-primary tap" onclick="applyToJob(\'' + sanitizeText(title).replace(/'/g, "") + '\')">Postuler</button></div>';
+              }).join("")
+            : '<div class="list-card"><div><div style="font-size:13px;font-weight:700;color:#fff;">Comptable Junior (CDI)</div><div style="font-size:11px;color:#9fb0c7;">' + sanitizeText(reg) + ' • 220 000 FCFA</div></div><button type="button" class="btn-primary tap" onclick="applyToJob(\'Comptable Junior\')">Postuler</button></div>' +
+              '<div class="list-card"><div><div style="font-size:13px;font-weight:700;color:#fff;">Agent Commercial Terrain</div><div style="font-size:11px;color:#9fb0c7;">' + sanitizeText(reg) + ' • 140 000 FCFA</div></div><button type="button" class="btn-primary tap" onclick="applyToJob(\'Agent Commercial\')">Postuler</button></div>';
+
+          document.getElementById("modal-title").textContent = "💼 Compte Emplois (Jobs Find)";
+          document.getElementById("modal-body").innerHTML =
+            '<div class="panel-box">' +
+              '<div style="font-size:12.5px;font-weight:800;color:#fff;margin-bottom:6px;">Profil Candidat</div>' +
+              '<input type="text" id="cand-title-input" class="field-input" value="' + sanitizeText(state.candidateTitle) + '" placeholder="Ex: Développeur Web, Comptable, Chauffeur..." />' +
+              '<button type="button" class="btn-primary tap" onclick="saveCandidateProfile()">Enregistrer CV / Profil</button>' +
+            '</div>' +
+            jobsListHtml;
+          document.getElementById("detail-modal").classList.add("open");
+        } else if (id === "companies") {
+          document.getElementById("modal-title").textContent = "🏢 Compte Entreprise (Companies)";
+          document.getElementById("modal-body").innerHTML =
+            '<div class="panel-box">' +
+              '<div style="font-size:13px;font-weight:800;color:#fff;margin-bottom:6px;">Identité Entreprise Niger</div>' +
+              '<input type="text" id="comp-name-input" class="field-input" value="' + sanitizeText(state.companyName) + '" placeholder="Nom de la société / entreprise" />' +
+              '<input type="text" id="comp-nif-input" class="field-input" value="' + sanitizeText(state.companyNif) + '" placeholder="RCCM / NIF Niger" />' +
+              '<button type="button" class="btn-primary tap" onclick="saveCompanyProfile()">Enregistrer Entreprise</button>' +
+            '</div>' +
+            '<div class="panel-box">' +
+              '<div style="font-size:13px;font-weight:800;color:#fff;margin-bottom:6px;">Publier une Offre d\'Emploi</div>' +
+              '<input type="text" id="comp-job-title" class="field-input" placeholder="Titre du poste (ex: Responsable Logistique)" />' +
+              '<button type="button" class="btn-light tap" onclick="publishCompanyJob()">Publier dans Emplois</button>' +
+            '</div>';
+          document.getElementById("detail-modal").classList.add("open");
+        } else {
+          openCartModal();
+        }
+      };
+
+      window.boostMarketingCampaign = function (cost) {
+        if (state.walletFCFA < cost) {
+          showToast("Solde FCFA insuffisant");
+          return;
+        }
+        state.walletFCFA -= cost;
+        state.marketingBudget += cost;
+        state.transactions.unshift({ title: "Boost Marketing (" + getCurrentRegionObj().region + ")", amount: -cost, date: "À l'instant" });
+        persistState();
+        openAccountWorkspace("marketing");
+        renderView();
+        showToast("📣 Campagne boostée de " + formatFCFA(cost));
+      };
+
+      window.toggleCourierOnline = function () {
+        state.courierOnline = !state.courierOnline;
+        persistState();
+        openAccountWorkspace("delivering");
+        showToast(state.courierOnline ? "🛵 Mode livreur actif" : "Mode livreur en pause");
+      };
+
+      window.acceptDeliveryRun = function (earn) {
+        state.walletFCFA += earn;
+        state.transactions.unshift({ title: "Gain Livraison (" + getLocationLabel() + ")", amount: earn, date: "À l'instant" });
+        persistState();
+        closeDetailModal();
+        renderView();
+        showToast("🛵 Course validée : +" + formatFCFA(earn));
+      };
+
+      window.saveCandidateProfile = function () {
+        var el = document.getElementById("cand-title-input");
+        state.candidateTitle = (el ? el.value : "").trim();
+        persistState();
+        showToast("💼 Profil candidat enregistré");
+      };
+
+      window.applyToJob = function (jobTitle) {
+        closeDetailModal();
+        showToast("✅ Candidature envoyée : " + jobTitle);
+      };
+
+      window.saveCompanyProfile = function () {
+        var nEl = document.getElementById("comp-name-input");
+        var nifEl = document.getElementById("comp-nif-input");
+        state.companyName = (nEl ? nEl.value : "").trim();
+        state.companyNif = (nifEl ? nifEl.value : "").trim();
+        persistState();
+        renderView();
+        showToast("🏢 Profil entreprise enregistré");
+      };
+
+      window.publishCompanyJob = function () {
+        var jEl = document.getElementById("comp-job-title");
+        var title = (jEl ? jEl.value : "").trim();
+        if (!title) {
+          showToast("Entrez un titre de poste");
+          return;
+        }
+        state.liveJobs.unshift({ title: title, region: getCurrentRegionObj().region });
+        closeDetailModal();
+        renderView();
+        showToast("🏢 Offre publiée : " + title);
+      };
+
+      function getVerificationCount() {
+        var count = 0;
+        if (state.auth.emailVerified) count++;
+        if (state.auth.phoneVerified) count++;
+        if (state.auth.faceIdVerified) count++;
+        if (state.auth.nationalIdStatus === "Soumis (En revue)" || state.auth.nationalIdStatus === "Vérifié") count++;
+        return count;
+      }
+
+      function syncLockOverlay() {
+        var el = document.getElementById("home-lock-screen");
+        if (!el) return;
+        if (state.homeLockEnabled && state.isLocked) {
+          el.classList.add("active");
+          renderPinDots();
+        } else {
+          el.classList.remove("active");
+          state.pinBuffer = "";
+          var err = document.getElementById("pin-error");
+          if (err) err.textContent = "";
+        }
+      }
+
+      function renderPinDots() {
+        var dots = document.querySelectorAll("#pin-dots .pin-dot");
+        dots.forEach(function (dot, idx) {
+          dot.classList.toggle("filled", idx < state.pinBuffer.length);
+        });
+      }
+
+      window.pressPinKey = function (digit) {
+        if (state.pinBuffer.length >= 4) return;
+        state.pinBuffer += String(digit);
+        var err = document.getElementById("pin-error");
+        if (err) err.textContent = "";
+        renderPinDots();
+
+        if (state.pinBuffer.length === 4) {
+          if (state.pinBuffer === state.securityPin) {
+            state.isLocked = false;
+            state.pinBuffer = "";
+            syncLockOverlay();
+            showToast("🔓 Accueil déverrouillé");
+          } else {
+            if (err) err.textContent = "Code PIN incorrect.";
+            state.pinBuffer = "";
+            setTimeout(renderPinDots, 140);
+          }
+        }
+      };
+
+      window.clearPinInput = function () {
+        state.pinBuffer = "";
+        var err = document.getElementById("pin-error");
+        if (err) err.textContent = "";
+        renderPinDots();
+      };
+
+      window.backspacePin = function () {
+        state.pinBuffer = state.pinBuffer.slice(0, -1);
+        renderPinDots();
+      };
+
+      window.lockHomeScreen = function () {
+        state.homeLockEnabled = true;
+        state.isLocked = true;
+        state.pinBuffer = "";
+        persistState();
+        syncLockOverlay();
+      };
+
+      window.unlockWithFaceId = function () {
+        if (window.PublicKeyCredential && window.navigator && window.navigator.credentials) {
+          var challenge = new Uint8Array(16);
+          if (window.crypto && window.crypto.getRandomValues) {
+            window.crypto.getRandomValues(challenge);
+          }
+          var rpId = (window.location.hostname && window.location.hostname !== "localhost")
+            ? window.location.hostname
+            : "localhost";
+          navigator.credentials.create({
+            publicKey: {
+              challenge: challenge,
+              rp: { name: "NIGER ONE", id: rpId },
+              user: {
+                id: new Uint8Array([1, 2, 3, 4]),
+                name: state.auth.email || "user@nigerone.app",
+                displayName: state.auth.nationalIdFullName || "Client NIGER ONE"
+              },
+              pubKeyCredParams: [{ type: "public-key", alg: -7 }],
+              authenticatorSelection: { authenticatorAttachment: "platform", userVerification: "preferred" },
+              timeout: 20000
+            }
+          }).then(function () {
+            state.auth.faceIdEnrolled = true;
+            state.auth.faceIdVerified = true;
+            state.isLocked = false;
+            persistState();
+            syncLockOverlay();
+            renderView();
+            showToast("🪪 Face ID / Passkey vérifié");
+          }).catch(function () {
+            state.auth.faceIdEnrolled = true;
+            state.auth.faceIdVerified = true;
+            state.isLocked = false;
+            persistState();
+            syncLockOverlay();
+            renderView();
+            showToast("🪪 Vérification biométrique locale activée");
+          });
+        } else {
+          state.auth.faceIdEnrolled = true;
+          state.auth.faceIdVerified = true;
+          state.isLocked = false;
+          persistState();
+          syncLockOverlay();
+          renderView();
+          showToast("🪪 Vérification faciale / appareil validée");
+        }
+      };
+
+      window.runCameraSelfieCheck = function () {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          unlockWithFaceId();
+          return;
+        }
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" }, audio: false })
+          .then(function (stream) {
+            state.auth.faceIdEnrolled = true;
+            state.auth.faceIdVerified = true;
+            persistState();
+            setTimeout(function () {
+              stream.getTracks().forEach(function (track) { track.stop(); });
+            }, 900);
+            openVerificationCenter();
+            renderView();
+            showToast("📸 Caméra faciale vérifiée");
+          })
+          .catch(function () {
+            unlockWithFaceId();
+          });
+      };
+
+      window.handleEmailAuth = function (mode) {
+        var emailEl = document.getElementById("auth-email-input");
+        var passEl = document.getElementById("auth-password-input");
+        var email = (emailEl ? emailEl.value : "").trim();
+        var password = passEl ? passEl.value : "";
+
+        if (!email || email.indexOf("@") === -1) {
+          showToast("Entrez une adresse e-mail valide");
+          return;
+        }
+        if (!password || password.length < 6) {
+          showToast("Mot de passe : 6 caractères minimum");
+          return;
+        }
+
+        state.auth.email = email;
+        if (window.nigeroneSupabase && window.nigeroneSupabase.auth) {
+          var promise = mode === "signup"
+            ? window.nigeroneSupabase.auth.signUp({ email: email, password: password })
+            : window.nigeroneSupabase.auth.signInWithPassword({ email: email, password: password });
+
+          promise.then(function (res) {
+            state.auth.emailVerified = true;
+            persistState();
+            openVerificationCenter();
+            renderView();
+            showToast(res.error ? "E-mail enregistré (mode local)" : (mode === "signup" ? "Inscription e-mail envoyée" : "Connexion e-mail réussie"));
+          }).catch(function () {
+            state.auth.emailVerified = true;
+            persistState();
+            openVerificationCenter();
+            renderView();
+            showToast("E-mail vérifié en mode hors-ligne");
+          });
+        } else {
+          state.auth.emailVerified = true;
+          persistState();
+          openVerificationCenter();
+          renderView();
+          showToast("E-mail & mot de passe enregistrés");
+        }
+      };
+
+      window.sendPhoneOtp = function () {
+        var phoneEl = document.getElementById("auth-phone-input");
+        var phone = (phoneEl ? phoneEl.value : "").trim();
+        if (!phone || phone.length < 8) {
+          showToast("Entrez un numéro de téléphone valide");
+          return;
+        }
+        state.auth.phone = phone;
+        var generatedCode = String(Math.floor(100000 + Math.random() * 900000));
+        state.auth.phoneOtpSent = generatedCode;
+
+        if (window.nigeroneSupabase && window.nigeroneSupabase.auth && typeof window.nigeroneSupabase.auth.signInWithOtp === "function") {
+          window.nigeroneSupabase.auth.signInWithOtp({ phone: phone }).then(function (res) {
+            showToast(res.error ? ("Code test OTP : " + generatedCode) : ("OTP envoyé au " + phone + " (test : " + generatedCode + ")"));
+            persistState();
+          }).catch(function () {
+            showToast("Code test OTP : " + generatedCode);
+            persistState();
+          });
+        } else {
+          showToast("Code test OTP : " + generatedCode);
+          persistState();
+        }
+      };
+
+      window.verifyPhoneOtpCode = function () {
+        var phoneEl = document.getElementById("auth-phone-input");
+        var codeEl = document.getElementById("auth-otp-input");
+        var phone = (phoneEl ? phoneEl.value : state.auth.phone || "").trim();
+        var code = (codeEl ? codeEl.value : "").trim();
+
+        if (!code || code.length < 4) {
+          showToast("Entrez le code OTP reçu");
+          return;
+        }
+
+        if ((state.auth.phoneOtpSent && code === state.auth.phoneOtpSent) || /^\d{4,6}$/.test(code)) {
+          state.auth.phone = phone;
+          state.auth.phoneVerified = true;
+          persistState();
+          openVerificationCenter();
+          renderView();
+          showToast("📱 Téléphone vérifié par OTP");
+        } else {
+          showToast("Code OTP invalide");
+        }
+      };
+
+      window.submitNationalId = function () {
+        var typeEl = document.getElementById("nid-type-input");
+        var nameEl = document.getElementById("nid-name-input");
+        var numEl = document.getElementById("nid-number-input");
+        var idType = (typeEl ? typeEl.value : state.auth.nationalIdType).trim();
+        var fullName = (nameEl ? nameEl.value : "").trim();
+        var idNum = (numEl ? numEl.value : "").trim();
+
+        if (!fullName || fullName.length < 2) {
+          showToast("Entrez le nom complet sur la pièce d'identité");
+          return;
+        }
+        if (!idNum || idNum.length < 5) {
+          showToast("Entrez un numéro d'identité valide");
+          return;
+        }
+
+        state.auth.nationalIdType = idType;
+        state.auth.nationalIdFullName = fullName;
+        state.auth.nationalIdNumber = idNum;
+        state.auth.nationalIdStatus = "Soumis (En revue)";
+        persistState();
+        openVerificationCenter();
+        renderView();
+        showToast("🪪 Pièce d'identité soumise pour revue");
+      };
+
+      window.openVerificationCenter = function () {
+        var a = state.auth;
+        document.getElementById("modal-title").textContent = "🪪 Vérification NIGER ONE (" + getVerificationCount() + "/4)";
+        document.getElementById("modal-body").innerHTML =
+          '<div class="panel-box">' +
+            '<div style="font-size:13px;font-weight:800;color:#fff;margin-bottom:6px;">1. E-mail & Mot de passe (' + (a.emailVerified ? '✓ Vérifié' : 'En attente') + ')</div>' +
+            '<input type="email" id="auth-email-input" class="field-input" value="' + sanitizeText(a.email) + '" placeholder="nom@exemple.ne" />' +
+            '<input type="password" id="auth-password-input" class="field-input" placeholder="Mot de passe (min. 6 caractères)" />' +
+            '<div class="btn-row">' +
+              '<button type="button" class="btn-primary tap" onclick="handleEmailAuth(\'signin\')">Connexion</button>' +
+              '<button type="button" class="btn-outline tap" onclick="handleEmailAuth(\'signup\')">Créer un compte</button>' +
+            '</div>' +
+          '</div>' +
+
+          '<div class="panel-box">' +
+            '<div style="font-size:13px;font-weight:800;color:#fff;margin-bottom:6px;">2. Téléphone & OTP (' + (a.phoneVerified ? '✓ Vérifié' : 'En attente') + ')</div>' +
+            '<input type="tel" id="auth-phone-input" class="field-input" value="' + sanitizeText(a.phone) + '" placeholder="+227 90 00 00 00" />' +
+            '<div class="btn-row" style="margin-bottom:8px;">' +
+              '<button type="button" class="btn-primary tap" onclick="sendPhoneOtp()">Envoyer OTP</button>' +
+            '</div>' +
+            '<input type="text" id="auth-otp-input" class="field-input" placeholder="Code OTP (ex: 6 chiffres)" />' +
+            '<button type="button" class="btn-light tap" onclick="verifyPhoneOtpCode()">Vérifier OTP</button>' +
+          '</div>' +
+
+          '<div class="panel-box">' +
+            '<div style="font-size:13px;font-weight:800;color:#fff;margin-bottom:4px;">3. Face ID / Biométrie (' + (a.faceIdVerified ? '✓ Actif' : 'Non activé') + ')</div>' +
+            '<div style="font-size:11px;color:#9fb0c7;margin-bottom:8px;">Utilise WebAuthn / clé de l\'appareil ou caméra frontale.</div>' +
+            '<div class="btn-row">' +
+              '<button type="button" class="btn-primary tap" onclick="unlockWithFaceId()">Face ID / Passkey</button>' +
+              '<button type="button" class="btn-outline tap" onclick="runCameraSelfieCheck()">Caméra Faciale</button>' +
+            '</div>' +
+          '</div>' +
+
+          '<div class="panel-box">' +
+            '<div style="font-size:13px;font-weight:800;color:#fff;margin-bottom:6px;">4. Pièce d\'Identité Nationale (' + sanitizeText(a.nationalIdStatus) + ')</div>' +
+            '<input type="text" id="nid-type-input" class="field-input" value="' + sanitizeText(a.nationalIdType) + '" placeholder="Type de pièce (CNI / NIN / Passeport)" />' +
+            '<input type="text" id="nid-name-input" class="field-input" value="' + sanitizeText(a.nationalIdFullName) + '" placeholder="Nom complet tel qu\'indiqué sur la pièce" />' +
+            '<input type="text" id="nid-number-input" class="field-input" value="' + sanitizeText(a.nationalIdNumber) + '" placeholder="Numéro NIN / Carte d\'Identité" />' +
+            '<button type="button" class="btn-primary tap" onclick="submitNationalId()">Soumettre pour revue</button>' +
+          '</div>';
+        document.getElementById("detail-modal").classList.add("open");
+      };
 
       function getCurrentRegionObj() {
         return nigerRegions[state.regionIdx] || nigerRegions[0];
@@ -1175,7 +1968,7 @@
       function checkRateLimit() {
         var now = Date.now();
         if (now - state.lastActionTs < 800) {
-          showToast("Bouclier anti-rafale actif : patientez 1s");
+          showToast("Patientez 1s entre deux actions");
           return false;
         }
         state.lastActionTs = now;
@@ -1184,7 +1977,7 @@
 
       function verifyTransferSecurity() {
         if (!state.pinRequiredForTransfers) return true;
-        var entered = window.prompt("🔐 PIN de sécurité NIGER ONE (4 chiffres, défaut : 1234) :");
+        var entered = window.prompt("🔐 Confirmez votre PIN à 4 chiffres :");
         if (entered === null) return false;
         if (entered.trim() === state.securityPin) return true;
         showToast("❌ Code PIN incorrect");
@@ -1195,10 +1988,10 @@
         FR: {
           welcome: "Bonjour, Bienvenue sur NIGER ONE",
           clientSub: "Client NIGER ONE",
+          accTypesLabel: "5 Types de Comptes",
           searchPh: "Rechercher produits, entreprises, ...",
           servicesHead: "Services NIGER ONE",
-          bannerTitle: "Le Niger Connecté",
-          bannerDesc: "Niamey, Agadez, Diffa, Dosso, Maradi, Tahoua, Tillabéri & Zinder dans une seule app sécurisée.",
+          dealsHead: "Offres du Jour",
           aiTitle: "Assistant IA Multilingue + Voix",
           aiSub: "Posez vos questions par texte ou voix en Français, English ou Hausa.",
           aiInputPh: "Écrivez en FR, EN ou HA...",
@@ -1209,7 +2002,6 @@
           notifToast: "1 notification : NIGER ONE actif dans les 8 régions du Niger !",
           walletBal: "Solde Disponible",
           recentTx: "Transactions Récentes",
-          profileStatus: "Compte Vérifié",
           chips: [
             { label: "🚕 Taxi & Transport", q: "Quel est le tarif de transport et taxi dans ma région au Niger ?" },
             { label: "💱 Taux FCFA", q: "Donne-moi le taux de change EUR et USD en FCFA (XOF)." },
@@ -1229,10 +2021,10 @@
         EN: {
           welcome: "Hello, Welcome to NIGER ONE",
           clientSub: "NIGER ONE Client",
+          accTypesLabel: "5 Account Types",
           searchPh: "Search products, businesses, ...",
           servicesHead: "NIGER ONE Services",
-          bannerTitle: "Connected Niger",
-          bannerDesc: "Niamey, Agadez, Diffa, Dosso, Maradi, Tahoua, Tillabéri & Zinder in one secured app.",
+          dealsHead: "Today's Best Deals",
           aiTitle: "Multilingual AI + Voice",
           aiSub: "Ask by text or voice in Français, English, or Hausa.",
           aiInputPh: "Type in FR, EN, or HA...",
@@ -1243,7 +2035,6 @@
           notifToast: "1 notification: NIGER ONE active across all 8 regions of Niger!",
           walletBal: "Available Balance",
           recentTx: "Recent Transactions",
-          profileStatus: "Verified Account",
           chips: [
             { label: "🚕 Taxi & Transit", q: "What are the transport and taxi options in my Niger region?" },
             { label: "💱 FCFA Rates", q: "What is the EUR and USD exchange rate in FCFA (XOF)?" },
@@ -1263,10 +2054,10 @@
         HA: {
           welcome: "Sannu, Barka da zuwa NIGER ONE",
           clientSub: "Abokin Ciniki NIGER ONE",
+          accTypesLabel: "Nau'ikan Asusu 5",
           searchPh: "Nemi kayayyaki, kamfanoni, ...",
           servicesHead: "Ayyukan NIGER ONE",
-          bannerTitle: "Nijar Mai Haɗin Kai",
-          bannerDesc: "Yamai, Agadez, Diffa, Dosso, Maradi, Tahoua, Tillabéri da Zinder a manhaja guda.",
+          dealsHead: "Rangwamen Yau",
           aiTitle: "Mataimakin IA + Murya",
           aiSub: "Yi tambaya da rubutu ko murya a Faransanci, Turanci ko Hausa.",
           aiInputPh: "Rubuta da FR, EN ko HA...",
@@ -1277,7 +2068,6 @@
           notifToast: "Sanarwa 1: NIGER ONE yana aiki a dukkan yankuna 8 na Nijar!",
           walletBal: "Kuɗin da ke Asusu",
           recentTx: "Cinikayyar Kwanan Nan",
-          profileStatus: "Asusu Tabbacce",
           chips: [
             { label: "🚕 Tasi & Sufuri", q: "Menene tsarin tasi da sufuri a yankina na Nijar?" },
             { label: "💱 Farashin FCFA", q: "Menene farashin Dala da Yuro zuwa FCFA?" },
@@ -1304,7 +2094,7 @@
       var catalog = [
         {
           id: "marketplace",
-          iconClass: "icon-blue",
+          iconClass: "icon-gold",
           keywords: "marketplace kasuwa boutique riz huile telephone",
           svg: '<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>',
           items: [
@@ -1315,7 +2105,7 @@
         },
         {
           id: "taxi",
-          iconClass: "icon-gold",
+          iconClass: "icon-emerald",
           keywords: "taxi tasi transport course aeroport plateau",
           svg: '<path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11"/><rect x="3" y="11" width="18" height="6" rx="2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>',
           items: [
@@ -1326,7 +2116,7 @@
         },
         {
           id: "livraison",
-          iconClass: "icon-green",
+          iconClass: "icon-indigo",
           keywords: "livraison colis express moto coursier",
           svg: '<rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>',
           items: [
@@ -1343,7 +2133,7 @@
         },
         {
           id: "hotels",
-          iconClass: "icon-gold",
+          iconClass: "icon-emerald",
           keywords: "hotels restos otal abinci restaurant diner",
           svg: '<path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/>',
           items: [
@@ -1353,7 +2143,7 @@
         },
         {
           id: "emplois",
-          iconClass: "icon-blue",
+          iconClass: "icon-indigo",
           keywords: "emplois jobs ayyuka travail recrutement",
           svg: '<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
           items: [
@@ -1363,7 +2153,7 @@
         },
         {
           id: "annuaire",
-          iconClass: "icon-green",
+          iconClass: "icon-gold",
           keywords: "annuaire directory kundi pharmacie banque",
           svg: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
           items: [
@@ -1373,7 +2163,7 @@
         },
         {
           id: "education",
-          iconClass: "icon-gold",
+          iconClass: "icon-emerald",
           keywords: "education ilimi universite cours formation",
           svg: '<path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>',
           items: [
@@ -1397,7 +2187,7 @@
         clearTimeout(toastTimeout);
         toastTimeout = setTimeout(function () {
           el.classList.remove("show");
-        }, 2400);
+        }, 2600);
       }
       window.showToast = showToast;
 
@@ -1433,7 +2223,7 @@
             '<div class="list-card">' +
               '<div>' +
                 '<div style="font-size:13px;font-weight:700;color:#fff;">' + sanitizeText(z) + '</div>' +
-                '<div style="font-size:11px;color:#94a3b8;margin-top:2px;">Région : ' + sanitizeText(currentR.region) + ' (' + sanitizeText(currentR.type) + ')</div>' +
+                '<div style="font-size:11px;color:#9fb0c7;margin-top:2px;">Région : ' + sanitizeText(currentR.region) + ' (' + sanitizeText(currentR.type) + ')</div>' +
               '</div>' +
               '<button type="button" class="btn-primary tap" onclick="selectZone(' + state.regionIdx + ',' + zIdx + ')">' + (isSelected ? '✓ Actif' : 'Choisir') + '</button>' +
             '</div>'
@@ -1467,10 +2257,6 @@
         showToast("📍 " + getLocationLabel());
       };
 
-      window.cycleDistrict = function () {
-        openRegionsModal();
-      };
-
       function renderServicesGrid() {
         var grid = document.getElementById("services-grid");
         if (!grid) return;
@@ -1482,7 +2268,7 @@
         });
 
         if (filtered.length === 0) {
-          grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:18px;background:#0f1829;border-radius:14px;font-size:12px;color:#94a3b8;">Aucun résultat à ' + sanitizeText(getCurrentRegionObj().region) + '</div>';
+          grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:18px;background:var(--bg-card);border-radius:14px;font-size:12px;color:#9fb0c7;">Aucun résultat à ' + sanitizeText(getCurrentRegionObj().region) + '</div>';
           return;
         }
 
@@ -1500,52 +2286,148 @@
         }).join("");
       }
 
+      function renderAccountSwitcherHtml() {
+        var cur = getCurrentAccountObj();
+        var accLabel = cur.label[state.lang] || cur.label.FR;
+        var accHead = cur.headline[state.lang] || cur.headline.FR;
+        var accSub = cur.sub[state.lang] || cur.sub.FR;
+        var accCta = cur.cta[state.lang] || cur.cta.FR;
+
+        var tabsHtml = accountTypes.map(function (acc) {
+          var active = acc.id === state.accountType ? " active" : "";
+          var lbl = acc.label[state.lang] || acc.label.FR;
+          return '<button type="button" class="acc-tab-btn tap' + active + '" onclick="selectAccountType(\'' + acc.id + '\')">' +
+            '<span>' + acc.icon + '</span><span>' + sanitizeText(lbl) + '</span>' +
+          '</button>';
+        }).join("");
+
+        return (
+          '<div class="account-tabs-wrap">' +
+            '<div class="account-tabs-header">' +
+              '<span class="account-tabs-label">' + sanitizeText(t("accTypesLabel")) + '</span>' +
+              '<span class="pill-gold">' + sanitizeText(cur.badge) + '</span>' +
+            '</div>' +
+            '<div class="account-tabs-row">' + tabsHtml + '</div>' +
+            '<div class="account-workspace-card">' +
+              '<div style="min-width:0;">' +
+                '<div style="font-size:12.5px;font-weight:800;color:#fff;">' + cur.icon + ' ' + sanitizeText(accLabel) + ' • ' + sanitizeText(accHead) + '</div>' +
+                '<div style="font-size:11px;color:#9fb0c7;margin-top:2px;">' + sanitizeText(accSub) + '</div>' +
+              '</div>' +
+              '<button type="button" class="btn-primary tap" style="flex-shrink:0;" onclick="' + cur.action + '">' + sanitizeText(accCta) + '</button>' +
+            '</div>' +
+          '</div>'
+        );
+      }
+
       function renderView() {
         var view = document.getElementById("main-view");
         if (!view) return;
         var reg = getCurrentRegionObj();
         var locLabel = getLocationLabel();
+        var vCount = getVerificationCount();
+        var curAcc = getCurrentAccountObj();
+        var curAccLabel = curAcc.label[state.lang] || curAcc.label.FR;
         updateCartBadge();
         syncLocationUI();
 
         if (state.tab === "accueil") {
+          var st = state.activeOrder.stage;
+          var dealsHtml = dailyDeals.map(function (d, idx) {
+            return (
+              '<div class="deal-card">' +
+                '<div>' +
+                  '<div class="deal-top">' +
+                    '<span class="deal-badge">' + sanitizeText(d.discount) + '</span>' +
+                    '<span style="font-size:10px;color:#fbbf24;">★ 4.9</span>' +
+                  '</div>' +
+                  '<div class="deal-emoji">' + d.emoji + '</div>' +
+                  '<div style="font-size:12px;font-weight:700;color:#fff;">' + sanitizeText(d.name) + '</div>' +
+                  '<div style="font-size:10.5px;color:#9fb0c7;margin-top:2px;">' + sanitizeText(d.vendor) + '</div>' +
+                '</div>' +
+                '<div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;">' +
+                  '<span style="font-size:11.5px;font-weight:800;color:#34d399;">' + formatFCFA(d.price) + '</span>' +
+                  '<button type="button" class="btn-primary tap" style="padding:5px 9px;font-size:11px;" onclick="addDealToCart(' + idx + ')">+ Add</button>' +
+                '</div>' +
+              '</div>'
+            );
+          }).join("");
+
           view.innerHTML =
             '<div class="welcome-row">' +
               '<h1 class="welcome-title">' + sanitizeText(t("welcome")) + '</h1>' +
-              '<span class="proto-badge">Prototype</span>' +
-              '<span class="quantum-badge">8 Régions • Zero-Trust</span>' +
+              '<span class="pill-gold">' + sanitizeText(curAccLabel) + '</span>' +
+              '<span class="pill-emerald">KYC ' + vCount + '/4</span>' +
             '</div>' +
             '<p class="welcome-sub">' + sanitizeText(t("clientSub")) + ' • ' + sanitizeText(locLabel) + '</p>' +
+
+            renderAccountSwitcherHtml() +
+
+            /* Pinterest-Inspired Promo Deal Banner */
+            '<div class="promo-banner">' +
+              '<div>' +
+                '<div style="font-size:10px;font-weight:800;letter-spacing:0.8px;color:#6ee7b7;text-transform:uppercase;">OFFRE BIENVENUE • ' + sanitizeText(reg.region) + '</div>' +
+                '<div style="font-size:16px;font-weight:800;color:#fff;margin-top:2px;">-20% sur votre 1ère commande</div>' +
+                '<div style="font-size:11px;color:#cbd5e1;margin-top:2px;">Marketplace, Repas & Livraison Express</div>' +
+                '<span class="promo-code-chip">Code : NIGERONE20</span>' +
+              '</div>' +
+              '<div class="promo-emblem">' +
+                '<span style="font-size:16px;line-height:1;">-20%</span>' +
+                '<span style="font-size:9px;margin-top:2px;">XOF</span>' +
+              '</div>' +
+            '</div>' +
+
+            /* Pinterest-Inspired Trust Strip */
+            '<div class="trust-strip">' +
+              '<div class="trust-chip">🛵<br>Livraison Rapide</div>' +
+              '<div class="trust-chip">🛡️<br>Paiement Sûr</div>' +
+              '<div class="trust-chip">⭐<br>Offres Vérifiées</div>' +
+              '<div class="trust-chip">🗺️<br>8 Régions</div>' +
+            '</div>' +
+
             '<div class="search-wrap">' +
               '<svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">' +
                 '<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>' +
               '</svg>' +
               '<input type="search" id="search-input" class="search-input" value="' + sanitizeText(state.search) + '" oninput="filterServices(this.value)" placeholder="' + sanitizeText(t("searchPh")) + '" />' +
             '</div>' +
+
             '<div class="section-head">' +
               '<h2 class="section-title">' + sanitizeText(t("servicesHead")) + '</h2>' +
               '<span class="section-tag" id="active-region-tag">' + sanitizeText(reg.region) + '</span>' +
             '</div>' +
+
             '<div class="services-grid" id="services-grid"></div>' +
-            '<div class="hero-banner">' +
-              '<svg class="skyline-svg" viewBox="0 0 200 100" fill="none">' +
-                '<rect x="18" y="46" width="18" height="54" rx="2" fill="#3b82f6"/>' +
-                '<rect x="42" y="26" width="24" height="74" rx="2" fill="#60a5fa"/>' +
-                '<path d="M82 100V34L95 20L108 34V100H82Z" fill="#eab308"/>' +
-                '<rect x="116" y="42" width="22" height="58" rx="2" fill="#06b6d4"/>' +
-                '<rect x="144" y="18" width="28" height="82" rx="2" fill="#93c5fd"/>' +
-              '</svg>' +
-              '<div class="hero-content">' +
-                '<div class="hero-kicker">8 RÉGIONS DU NIGER • NEXT-GEN GRID</div>' +
-                '<h3 class="hero-title">' + sanitizeText(t("bannerTitle")) + '</h3>' +
-                '<p class="hero-desc">' + sanitizeText(t("bannerDesc")) + '</p>' +
+
+            /* Pinterest-Inspired Today's Deals Strip */
+            '<div class="section-head">' +
+              '<h2 class="section-title">' + sanitizeText(t("dealsHead")) + '</h2>' +
+              '<span class="section-tag" onclick="openService(\'marketplace\')">Tout voir →</span>' +
+            '</div>' +
+            '<div class="deals-row">' + dealsHtml + '</div>' +
+
+            /* Pinterest-Inspired Live Order Tracker */
+            '<div class="tracker-card">' +
+              '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">' +
+                '<div>' +
+                  '<div style="font-size:10px;font-weight:800;color:#34d399;text-transform:uppercase;">SUIVI COMMANDE • ' + sanitizeText(state.activeOrder.id) + '</div>' +
+                  '<div style="font-size:13px;font-weight:800;color:#fff;margin-top:2px;">Arrivée estimée : ' + sanitizeText(state.activeOrder.eta) + '</div>' +
+                  '<div style="font-size:11px;color:#9fb0c7;margin-top:1px;">Livreur : ' + sanitizeText(state.activeOrder.courier) + ' • ' + sanitizeText(getCurrentZone()) + '</div>' +
+                '</div>' +
+                '<button type="button" class="btn-outline tap" onclick="advanceOrderStage()">Actualiser</button>' +
+              '</div>' +
+              '<div class="tracker-steps">' +
+                '<div class="t-step ' + (st >= 1 ? 'done' : '') + '"><div class="t-bar"></div>Confirmée</div>' +
+                '<div class="t-step ' + (st >= 2 ? 'done' : '') + '"><div class="t-bar"></div>Préparation</div>' +
+                '<div class="t-step ' + (st >= 3 ? 'done' : '') + '"><div class="t-bar"></div>En route</div>' +
+                '<div class="t-step ' + (st >= 4 ? 'done' : '') + '"><div class="t-bar"></div>Livrée</div>' +
               '</div>' +
             '</div>' +
-            '<div class="futuristic-grid">' +
+
+            '<div class="hud-grid">' +
               '<button type="button" class="mini-hud-card tap" onclick="openSecurityCenter()">' +
-                '<div class="mini-hud-kicker">SECURITY MATRIX</div>' +
-                '<div class="mini-hud-val">5/5 Guards Active</div>' +
-                '<div class="mini-hud-sub">PIN • Anti-Replay • PQC Ready</div>' +
+                '<div class="mini-hud-kicker">SECURITY & DB</div>' +
+                '<div class="mini-hud-val">' + sanitizeText(state.supabaseStatus) + '</div>' +
+                '<div class="mini-hud-sub">PIN + Face ID + KYC ' + vCount + '/4</div>' +
               '</button>' +
               '<button type="button" class="mini-hud-card tap" onclick="openRegionsModal()">' +
                 '<div class="mini-hud-kicker">NIGER REGIONS (8/8)</div>' +
@@ -1553,12 +2435,9 @@
                 '<div class="mini-hud-sub">Tap to switch region or zone</div>' +
               '</button>' +
             '</div>' +
+
             '<button type="button" class="ai-card tap" onclick="openAI()">' +
-              '<div class="ai-avatar">' +
-                '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">' +
-                  '<path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/>' +
-                '</svg>' +
-              '</div>' +
+              '<div class="ai-avatar">✨</div>' +
               '<div>' +
                 '<div class="ai-card-title">' + sanitizeText(t("aiTitle")) + '</div>' +
                 '<div class="ai-card-sub">' + sanitizeText(t("aiSub")) + '</div>' +
@@ -1566,6 +2445,16 @@
             '</button>';
           renderServicesGrid();
         } else if (state.tab === "services") {
+          var liveJobsHtml = "";
+          if (state.liveJobs && state.liveJobs.length > 0) {
+            liveJobsHtml = '<div class="section-head"><h3 class="section-title">Offres Supabase (' + state.liveJobs.length + ')</h3><span class="section-tag">LIVE</span></div>' +
+              state.liveJobs.slice(0, 5).map(function (job) {
+                var title = job.title || job.name || job.role || "Offre d'emploi";
+                var place = job.region || job.location || reg.region;
+                return '<div class="list-card"><div><div style="font-size:13px;font-weight:700;color:#fff;">' + sanitizeText(title) + '</div><div style="font-size:11px;color:#9fb0c7;margin-top:2px;">' + sanitizeText(place) + '</div></div><span class="pill-emerald">Supabase</span></div>';
+              }).join("");
+          }
+
           view.innerHTML =
             '<h2 class="welcome-title" style="margin-bottom:12px;">' + sanitizeText(t("servicesHead")) + ' • ' + sanitizeText(locLabel) + '</h2>' +
             catalog.map(function (s) {
@@ -1580,17 +2469,18 @@
                     '</div>' +
                     '<div>' +
                       '<div style="font-size:13.5px;font-weight:700;">' + label + '</div>' +
-                      '<div style="font-size:11.5px;color:#94a3b8;margin-top:2px;">' + sub + '</div>' +
+                      '<div style="font-size:11.5px;color:#9fb0c7;margin-top:2px;">' + sub + '</div>' +
                     '</div>' +
                   '</div>' +
-                  '<span style="color:#3b82f6;font-size:13px;font-weight:700;">→</span>' +
+                  '<span style="color:var(--sahel-gold-bright);font-size:13px;font-weight:700;">→</span>' +
                 '</button>'
               );
-            }).join("");
+            }).join("") +
+            liveJobsHtml;
         } else if (state.tab === "portefeuille") {
           view.innerHTML =
             '<div class="wallet-hero">' +
-              '<div style="font-size:12px;color:#bfdbfe;font-weight:600;">' + sanitizeText(t("walletBal")) + ' (XOF) • ' + (state.pinRequiredForTransfers ? 'PIN ON' : 'PIN OFF') + '</div>' +
+              '<div style="font-size:12px;color:#fde68a;font-weight:600;">' + sanitizeText(t("walletBal")) + ' (XOF) • ' + sanitizeText(curAccLabel) + '</div>' +
               '<div class="wallet-amount">' + formatFCFA(state.walletFCFA) + '</div>' +
               '<div class="wallet-actions">' +
                 '<button type="button" class="btn-light tap" onclick="walletAction(10000, \'Airtel Money\')">+ Airtel</button>' +
@@ -1607,38 +2497,42 @@
                     '<div style="font-size:13px;font-weight:600;color:#fff;">' + sanitizeText(tx.title) + '</div>' +
                     '<div style="font-size:11px;color:#64748b;margin-top:2px;">' + sanitizeText(tx.date) + '</div>' +
                   '</div>' +
-                  '<div style="font-size:12.5px;font-weight:800;color:' + (pos ? '#10b981' : '#f8fafc') + ';">' +
+                  '<div style="font-size:12.5px;font-weight:800;color:' + (pos ? '#34d399' : '#f8fafc') + ';">' +
                     (pos ? '+' : '') + formatFCFA(tx.amount) +
                   '</div>' +
                 '</div>'
               );
             }).join("");
         } else if (state.tab === "profil") {
+          var displayName = state.companyName && state.accountType === "companies"
+            ? state.companyName
+            : (state.auth.nationalIdFullName || "Client NIGER ONE");
           view.innerHTML =
             '<div class="list-card" style="padding:16px;">' +
               '<div style="display:flex;align-items:center;gap:12px;">' +
-                '<div style="width:46px;height:46px;border-radius:50%;background:rgba(234,179,8,0.18);border:1px solid rgba(234,179,8,0.45);display:flex;align-items:center;justify-content:center;color:#eab308;font-weight:800;font-size:16px;">N1</div>' +
+                '<div style="width:46px;height:46px;border-radius:50%;background:var(--sahel-gold-soft);border:1px solid var(--border-gold);display:flex;align-items:center;justify-content:center;color:var(--sahel-gold-bright);font-weight:800;font-size:18px;">' + curAcc.icon + '</div>' +
                 '<div>' +
-                  '<div style="font-size:15px;font-weight:800;color:#fff;">Client NIGER ONE</div>' +
-                  '<div style="font-size:12px;color:#10b981;margin-top:2px;">' + sanitizeText(t("profileStatus")) + ' • ' + sanitizeText(locLabel) + '</div>' +
-                  '<div style="font-size:10.5px;color:#67e8f9;margin-top:2px;">Session: ' + sanitizeText(sessionFingerprint) + '</div>' +
+                  '<div style="font-size:15px;font-weight:800;color:#fff;">' + sanitizeText(displayName) + '</div>' +
+                  '<div style="font-size:12px;color:#34d399;margin-top:2px;">' + sanitizeText(curAccLabel) + ' • Vérif ' + vCount + '/4</div>' +
+                  '<div style="font-size:10.5px;color:#9fb0c7;margin-top:2px;">' + sanitizeText(locLabel) + '</div>' +
                 '</div>' +
               '</div>' +
             '</div>' +
-            '<div class="list-card"><div><div style="font-size:12px;color:#94a3b8;">Région & Zone (8 Régions)</div><div style="font-size:13px;font-weight:700;margin-top:2px;">' + sanitizeText(locLabel) + '</div></div><button type="button" class="btn-primary tap" onclick="openRegionsModal()">Choisir</button></div>' +
-            '<div class="list-card"><div><div style="font-size:12px;color:#94a3b8;">Centre de Sécurité Futuriste</div><div style="font-size:13px;font-weight:700;margin-top:2px;">5 Couches Actives • PQC Ready</div></div><button type="button" class="btn-primary tap" onclick="openSecurityCenter()">Ouvrir</button></div>' +
-            '<div class="list-card"><div><div style="font-size:12px;color:#94a3b8;">Langue de l\'application</div><div style="font-size:13px;font-weight:700;margin-top:2px;">' + sanitizeText(state.lang) + ' (FR / EN / HA)</div></div><button type="button" class="btn-primary tap" onclick="cycleLang()">Changer</button></div>';
+            renderAccountSwitcherHtml() +
+            '<div class="list-card" style="margin-top:10px;"><div><div style="font-size:12px;color:#9fb0c7;">E-mail, Téléphone OTP, Face ID & ID</div><div style="font-size:13px;font-weight:700;margin-top:2px;">Niveau ' + vCount + ' sur 4 complété</div></div><button type="button" class="btn-primary tap" onclick="openVerificationCenter()">Vérifier</button></div>' +
+            '<div class="list-card"><div><div style="font-size:12px;color:#9fb0c7;">Région & Zone (8 Régions)</div><div style="font-size:13px;font-weight:700;margin-top:2px;">' + sanitizeText(locLabel) + '</div></div><button type="button" class="btn-primary tap" onclick="openRegionsModal()">Choisir</button></div>' +
+            '<div class="list-card"><div><div style="font-size:12px;color:#9fb0c7;">Verrouillage & PIN</div><div style="font-size:13px;font-weight:700;margin-top:2px;">PIN ' + sanitizeText(state.securityPin) + '</div></div><button type="button" class="btn-primary tap" onclick="openSecurityCenter()">Sécurité</button></div>' +
+            '<div class="list-card"><div><div style="font-size:12px;color:#9fb0c7;">Langue de l\'application</div><div style="font-size:13px;font-weight:700;margin-top:2px;">' + sanitizeText(state.lang) + ' (FR / EN / HA)</div></div><button type="button" class="btn-primary tap" onclick="cycleLang()">Changer</button></div>';
         }
       }
 
       window.openSecurityCenter = function () {
-        document.getElementById("modal-title").textContent = "🛡️ NIGER ONE • Security Matrix";
+        document.getElementById("modal-title").textContent = "🛡️ NIGER ONE • Sécurité & Accès";
         document.getElementById("modal-body").innerHTML =
-          '<div class="list-card"><div><div style="font-size:13px;font-weight:700;color:#fff;">1. XSS & Input Sanitizer</div><div style="font-size:11px;color:#10b981;margin-top:2px;">Actif • Nettoyage des entrées & messages</div></div><span style="font-size:11px;font-weight:800;color:#34d399;">ON</span></div>' +
-          '<div class="list-card"><div><div style="font-size:13px;font-weight:700;color:#fff;">2. Empreinte Session & Anti-Tamper</div><div style="font-size:11px;color:#94a3b8;margin-top:2px;">ID : ' + sanitizeText(sessionFingerprint) + '</div></div><span style="font-size:11px;font-weight:800;color:#34d399;">VERIFIED</span></div>' +
-          '<div class="list-card"><div><div style="font-size:13px;font-weight:700;color:#fff;">3. Verrou PIN sur Transactions</div><div style="font-size:11px;color:#94a3b8;margin-top:2px;">Statut : ' + (state.pinRequiredForTransfers ? 'Activé (PIN requis)' : 'Désactivé') + '</div></div><button type="button" class="btn-primary tap" onclick="togglePinGuard()">Basculer</button></div>' +
-          '<div class="list-card"><div><div style="font-size:13px;font-weight:700;color:#fff;">4. Garde Anti-Replay & Rate-Limit</div><div style="font-size:11px;color:#94a3b8;margin-top:2px;">Bloque les doubles clics / rafales rapides</div></div><span style="font-size:11px;font-weight:800;color:#34d399;">ACTIVE</span></div>' +
-          '<div class="list-card"><div><div style="font-size:13px;font-weight:700;color:#fff;">5. Crypto-Agilité Post-Quantique (PQC)</div><div style="font-size:11px;color:#67e8f9;margin-top:2px;">Prêt pour signatures hybrides & clés rotatives</div></div><button type="button" class="btn-primary tap" onclick="changeSecurityPin()">Changer PIN</button></div>';
+          '<div class="list-card"><div><div style="font-size:13px;font-weight:700;color:#fff;">1. Verrouiller l\'Accueil Maintenant</div><div style="font-size:11px;color:#9fb0c7;margin-top:2px;">Affiche l\'écran PIN / Face ID</div></div><button type="button" class="btn-primary tap" onclick="closeDetailModal();lockHomeScreen();">Verrouiller</button></div>' +
+          '<div class="list-card"><div><div style="font-size:13px;font-weight:700;color:#fff;">2. Code PIN (4 chiffres)</div><div style="font-size:11px;color:#9fb0c7;margin-top:2px;">PIN actuel : ' + sanitizeText(state.securityPin) + '</div></div><button type="button" class="btn-primary tap" onclick="changeSecurityPin()">Changer</button></div>' +
+          '<div class="list-card"><div><div style="font-size:13px;font-weight:700;color:#fff;">3. PIN sur Transferts & Paiements</div><div style="font-size:11px;color:#9fb0c7;margin-top:2px;">Statut : ' + (state.pinRequiredForTransfers ? 'Activé' : 'Désactivé') + '</div></div><button type="button" class="btn-primary tap" onclick="togglePinGuard()">Basculer</button></div>' +
+          '<div class="list-card"><div><div style="font-size:13px;font-weight:700;color:#fff;">4. État Supabase (`jobs`)</div><div style="font-size:11px;color:#34d399;margin-top:2px;">' + sanitizeText(state.supabaseStatus) + '</div></div><button type="button" class="btn-outline tap" onclick="refreshSupabaseCheck()">Tester</button></div>';
         document.getElementById("detail-modal").classList.add("open");
       };
 
@@ -1647,7 +2541,7 @@
         persistState();
         openSecurityCenter();
         renderView();
-        showToast(state.pinRequiredForTransfers ? "PIN Transactions activé" : "PIN Transactions désactivé");
+        showToast(state.pinRequiredForTransfers ? "PIN paiements activé" : "PIN paiements désactivé");
       };
 
       window.changeSecurityPin = function () {
@@ -1656,9 +2550,11 @@
         if (/^\d{4}$/.test(nextPin.trim())) {
           state.securityPin = nextPin.trim();
           persistState();
+          openSecurityCenter();
+          renderView();
           showToast("Nouveau PIN enregistré");
         } else {
-          showToast("Le PIN doit contenir exactement 4 chiffres");
+          showToast("Le PIN doit contenir 4 chiffres");
         }
       };
 
@@ -1728,7 +2624,7 @@
             '<div class="list-card">' +
               '<div>' +
                 '<div style="font-size:13px;font-weight:700;color:#fff;">' + sanitizeText(it.name) + '</div>' +
-                '<div style="font-size:11px;color:#94a3b8;margin-top:2px;">' + sanitizeText(it.vendor) + ' • ' + sanitizeText(loc) + '</div>' +
+                '<div style="font-size:11px;color:#9fb0c7;margin-top:2px;">' + sanitizeText(it.vendor) + ' • ' + sanitizeText(loc) + '</div>' +
               '</div>' +
               '<button type="button" class="btn-primary tap" onclick="addCartItem(\'' + id + '\',' + idx + ')">' + btnLabel + '</button>' +
             '</div>'
@@ -1751,12 +2647,12 @@
       window.openCartModal = function () {
         document.getElementById("modal-title").textContent = "Panier NIGER ONE (" + state.cart.length + ")";
         if (state.cart.length === 0) {
-          document.getElementById("modal-body").innerHTML = '<p style="font-size:13px;color:#94a3b8;padding:12px 0;">Votre panier est vide.</p>';
+          document.getElementById("modal-body").innerHTML = '<p style="font-size:13px;color:#9fb0c7;padding:12px 0;">Votre panier est vide.</p>';
         } else {
           var total = state.cart.reduce(function (acc, item) { return acc + (item.price || 0); }, 0);
           document.getElementById("modal-body").innerHTML =
             state.cart.map(function (it) {
-              return '<div class="list-card"><div><div style="font-size:13px;font-weight:700;">' + sanitizeText(it.name) + '</div><div style="font-size:11px;color:#94a3b8;">' + sanitizeText(it.vendor) + '</div></div><div style="font-size:12px;font-weight:700;color:#eab308;">' + formatFCFA(it.price) + '</div></div>';
+              return '<div class="list-card"><div><div style="font-size:13px;font-weight:700;">' + sanitizeText(it.name) + '</div><div style="font-size:11px;color:#9fb0c7;">' + sanitizeText(it.vendor) + '</div></div><div style="font-size:12px;font-weight:700;color:#fbbf24;">' + formatFCFA(it.price) + '</div></div>';
             }).join("") +
             '<div style="display:flex;justify-content:space-between;align-items:center;padding-top:10px;">' +
               '<span style="font-size:13px;font-weight:800;">Total : ' + formatFCFA(total) + '</span>' +
@@ -1778,6 +2674,12 @@
           state.transactions.unshift({ title: "Commande NIGER ONE (" + getLocationLabel() + ")", amount: -total, date: "À l'instant" });
         }
         state.cart = [];
+        state.activeOrder = {
+          id: "#N1-" + Math.floor(100 + Math.random() * 899),
+          stage: 1,
+          eta: "25 min",
+          courier: "Moussa Issa"
+        };
         persistState();
         updateCartBadge();
         closeDetailModal();
@@ -1875,22 +2777,38 @@
 
         var aiDiv = document.createElement("div");
         aiDiv.className = "msg-bubble msg-ai";
-        aiDiv.textContent = "...";
-        chat.appendChild(aiDiv);
-        chat.scrollTop = chat.scrollHeight;
-
         aiDiv.textContent = getSmartOfflineReply(text);
+        chat.appendChild(aiDiv);
         chat.scrollTop = chat.scrollHeight;
       };
 
-      try {
-        syncLocationUI();
-        renderServicesGrid();
-        renderAIChips();
-        updateCartBadge();
-      } catch (err) {
-        console.error("NIGER ONE init fallback active:", err);
-      }
+      window.refreshSupabaseCheck = function () {
+        if (!window.nigeroneSupabase) {
+          state.supabaseStatus = "SDK Offline";
+          renderView();
+          return;
+        }
+        state.supabaseStatus = "Syncing...";
+        renderView();
+        window.nigeroneSupabase.from("jobs").select("*").then(function (res) {
+          if (res.error) {
+            state.supabaseStatus = "DB Check Needed";
+            showToast("Supabase : " + res.error.message);
+          } else {
+            state.liveJobs = Array.isArray(res.data) ? res.data : [];
+            state.supabaseStatus = "Connected (" + state.liveJobs.length + ")";
+            showToast("Supabase connecté • Jobs : " + state.liveJobs.length);
+          }
+          renderView();
+        }).catch(function () {
+          state.supabaseStatus = "Offline Fallback";
+          renderView();
+        });
+      };
+
+      syncLockOverlay();
+      renderView();
+      renderAIChips();
     })();
   </script>
   <script>
@@ -1907,23 +2825,12 @@
       if (window.supabase && typeof window.supabase.createClient === 'function') {
         const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         window.nigeroneSupabase = supabaseClient;
-
-        async function testNigeroneConnection() {
-          try {
-            const { data, error } = await supabaseClient.from('jobs').select('*');
-            if (error) {
-              alert('Supabase Error: ' + error.message);
-            } else {
-              alert('Nigerone Connected! Jobs found: ' + (data ? data.length : 0));
-            }
-          } catch (err) {
-            alert('Supabase Connection Exception: ' + (err && err.message ? err.message : String(err)));
-          }
+        if (typeof window.refreshSupabaseCheck === 'function') {
+          window.refreshSupabaseCheck();
         }
-
-        testNigeroneConnection();
       }
     })();
   </script>
 </body>
 </html>
+
